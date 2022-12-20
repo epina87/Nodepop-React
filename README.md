@@ -9,8 +9,8 @@ Será un programa que realizará una simulación del juego, mostrando el tablero
 
 El funcionamiento deseado será el siguiente:
 
-Mostrar el tablero inicial.
-Generar selección de cartas de forma aleatoria.
-Mostrarla por pantalla hasta que quede solucionado el juego.
-Una vez terminado el juego, se mostrarán algunas estadísticas.
-Intentaremos añadir un poco de inteligencia para que el juego sea más listo
+* Mostrar el tablero inicial.
+* Generar selección de cartas de forma aleatoria.
+* Mostrarla por pantalla hasta que quede solucionado el juego.
+* Una vez terminado el juego, se mostrarán algunas estadísticas.
+* Intentaremos añadir un poco de inteligencia para que el juego sea más listo
