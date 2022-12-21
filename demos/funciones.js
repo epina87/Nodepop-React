@@ -64,7 +64,13 @@ let result5
  * @returns {String}
  */
 const hello5 = name => `Hello ${name}`
-result5 = hello5('') // imprime "Hello "
+result5 = hello5('') // result5 === "Hello "
 console.log('result5', result5)
 result5 = hello5('Jordi', undefined, 40, {}) // imprime "Hello Jordi" e ignora los otros parámetros
 console.log('result5', result5)
+
+// OJO!!! que para hacer llamadas a la funcion, siempre hay que hacer:
+// nombreDeLaFuncion()
+// Si hacemos solamente
+// nombreDeLaFuncion nos va a salir siempre [Function: hello5]
+console.log('result5', hello5 )
