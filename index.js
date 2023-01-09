@@ -56,8 +56,8 @@ function printBoard(board, discovered = false) {
         for(let j = 0; j < COLS; j++){
             // line = line + ' '
             // nos permite almacenar en line la carta cubierta o descubierta
-            if (discovered) {
-                const card = board[i * COLS + j]
+            const card = board[i * COLS + j]
+            if (discovered || card.discovered) {
                 line.push(card.figure)
             } else {
                 line.push(COVERED_CARD)
@@ -96,7 +96,10 @@ const game = {
         // Alternativa a popular el Array board
         for(let figure of figures) {
             // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
-            const card = {figure}
+            const card = {
+                figure,
+                discovered: false
+            }
             this.board.push(card)
             this.board.push(card)
         }
@@ -114,6 +117,12 @@ const game = {
             cardsIndexes.push(cardIndex)
         }
         return cardsIndexes
+    },
+    discoverPickedCards(cardsIndexes) {
+        cardsIndexes.forEach(cardIndex => {
+            const card = this.board[cardIndex]
+            card.discovered = true
+        })
     }
 
 }
@@ -158,6 +167,8 @@ printBoard(game.board)
     // ✅mostar los indices de estas cartas seleccionadas
     printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
     // 🟩mostrar las cartas seleccionadas descubiertas en el tablero
+    game.discoverPickedCards(cardsIndexesSelected)
+    printBoard(game.board)
     // 🟩si son la misma figura
         // 🟩mantenemos las cartas descubiertas
     // 🟩si no son la misma figura
