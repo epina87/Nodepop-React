@@ -96,12 +96,22 @@ const game = {
         // Alternativa a popular el Array board
         for(let figure of figures) {
             // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
+            for (let i = 0; i < 2; i++) {
+                const card = {
+                    figure,
+                    discovered: false
+                }
+                this.board.push(card)
+            }
+            // 🍌 nos genera un problemón con las referencias!!
+            /*
             const card = {
                 figure,
                 discovered: false
             }
             this.board.push(card)
             this.board.push(card)
+            */
         }
         this.availableIndexes = this.board.map((e, index) => index)
     },
