@@ -21,56 +21,12 @@
 // TODO Una vez terminado el juego, se mostrarán algunas estadísticas.
 // TODO Intentaremos añadir un poco de inteligencia para que el juego sea más listo
 
-
-// ------- preparación del juego
-// ✅generar figuras
-// TODO Mostrar el tablero inicial.
-// filas del tablero
-const ROWS = 3
-// columnas del tablero
-const COLS = 2
-// figuras disponibles para las cartas
-const FIGURES = ['🤓', '🎃', '💚']
-const COVERED_CARD = '🃏'
-printHeading('Available figures')
-console.log(FIGURES)
 function printHeading(text) {
     const pad = '='.repeat(text.length)
     console.log(`==========${pad}==========`)
     console.log(`========= ${text} =========`)
     console.log(`==========${pad}==========`)
 }
-// tablero
-let board = []
-// por cada fila
-// for(let i = 0; i < ROWS; i++) {
-//     // una fila cualquiera
-//     let row = []
-//     // por cada columna
-//     for(let j = 0; j < COLS; j++) {
-//         //console.log(j, i)
-//         row[j] = FIGURES[i]
-//     }
-//     board[i] = row
-// }
-
-// for(let i = 0; i < ROWS * COLS / 2; i++) { // 3 * 2 / 2 === 3, la misma dimensión que FIGURES.length
-//     for (let j = 0; j < 2; j++) { // Por cada figura, insertamos 2 veces en el mazo
-//         // board[j + i * ROWS] = FIGURES[j] // intentadlo vosotros
-//         const figure = FIGURES[i]
-//         board.push(figure) // Si solamente queremos añadir elementos al array, lo hacemos con Array.push
-//     }
-// }
-// Alternativa a popular el Array board
-for(let figure of FIGURES) {
-    // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
-    // ✅generar cartas con las figuras disponibles
-    const card = {figure}
-    board.push(card)
-    board.push(card)
-}
-printHeading('the board')
-// ✅mezclar las cartas
 // una funcion que nos permite randomizar los elementos de un array
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -89,9 +45,6 @@ function shuffle(array) {
   
     return array;
 }
-
-board = shuffle(board)
-// ✅mostrar las cartas dispuestas en filas y columnas
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
 function printBoard(board, discovered = false) {
     for(let i = 0; i < ROWS; i++) {
@@ -116,12 +69,64 @@ function printBoard(board, discovered = false) {
     }
 }
 
+// ------- preparación del juego
+// ✅generar figuras
+// TODO Mostrar el tablero inicial.
+// filas del tablero
+const ROWS = 3
+// columnas del tablero
+const COLS = 2
+// figuras disponibles para las cartas
+const FIGURES = ['🤓', '🎃', '💚']
+const COVERED_CARD = '🃏'
+printHeading('Available figures')
+console.log(FIGURES)
+const game = {
+    // tablero
+    board: [],
+    // setupGame nos permite configurar el juego
+    setupGame: function(figures) {
+        // Alternativa a popular el Array board
+        for(let figure of figures) {
+            // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
+            const card = {figure}
+            this.board.push(card)
+            this.board.push(card)
+        }
+    }
+}
 
-printBoard(board, true)
+// por cada fila
+// for(let i = 0; i < ROWS; i++) {
+//     // una fila cualquiera
+//     let row = []
+//     // por cada columna
+//     for(let j = 0; j < COLS; j++) {
+//         //console.log(j, i)
+//         row[j] = FIGURES[i]
+//     }
+//     board[i] = row
+// }
+
+// for(let i = 0; i < ROWS * COLS / 2; i++) { // 3 * 2 / 2 === 3, la misma dimensión que FIGURES.length
+//     for (let j = 0; j < 2; j++) { // Por cada figura, insertamos 2 veces en el mazo
+//         // board[j + i * ROWS] = FIGURES[j] // intentadlo vosotros
+//         const figure = FIGURES[i]
+//         board.push(figure) // Si solamente queremos añadir elementos al array, lo hacemos con Array.push
+//     }
+// }
+
+// ✅generar cartas con las figuras disponibles
+game.setupGame(FIGURES)
+printHeading('the board')
+// ✅mezclar las cartas
+game.board = shuffle(game.board)
+// ✅mostrar las cartas dispuestas en filas y columnas
+printBoard(game.board, true)
 // ------- empieza el juego
 // ✅mostrar las cartas cubiertas en filas y columnas
 printHeading('The memory game starts')
-printBoard(board)
+printBoard(game.board)
 // 🟩mientras no haya terminado el juego
     // 🟩mostrar la ronda en la que estamos
     // 🟩seleccionar un par de cartas cubiertas al azar
