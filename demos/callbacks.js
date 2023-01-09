@@ -1,20 +1,15 @@
-const legolas = {
-    name: 'legolas',
-    attackSpeed: 20,
-    attackDamage: 10
+class Personaje {
+    constructor(name, attackSpeed = 0, attackDamage = 0){
+        this.name = name
+        this.attackSpeed = attackSpeed
+        this.attackDamage = attackDamage
+        console.log(`Construyendo ${name}`)
+    }
 }
 
-const aragorn = {
-    name: 'aragorn',
-    attackSpeed: 15,
-    attackDamage: 15
-}
-
-const gimly = {
-    name: 'gimly',
-    attackSpeed: 7,
-    attackDamage: 20
-}
+const legolas = new Personaje('legolas',20,10)
+const aragorn = new Personaje('aragorn',15,15)
+const gimly = new Personaje('gimly',7,20)
 
 function atacar(personaje, callback) { //   si callback === attackWithSword
     let attack = callback(personaje) //     let attack = attackWithSword(personaje) 
