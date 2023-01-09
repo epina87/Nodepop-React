@@ -31,6 +31,7 @@ const ROWS = 3
 const COLS = 2
 // figuras disponibles para las cartas
 const FIGURES = ['🤓', '🎃', '💚']
+const COVERED_CARD = '🃏'
 printHeading('Available figures')
 console.log(FIGURES)
 function printHeading(text) {
@@ -92,14 +93,20 @@ function shuffle(array) {
 board = shuffle(board)
 // ✅mostrar las cartas dispuestas en filas y columnas
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
-function printBoard(board) {
+function printBoard(board, discovered = false) {
     for(let i = 0; i < ROWS; i++) {
         // let line = ''
         let line = []
         for(let j = 0; j < COLS; j++){
             // line = line + ' '
-            const card = board[i * COLS + j]
-            line.push(card.figure)
+            // nos permite almacenar en line la carta cubierta o descubierta
+            if (discovered) {
+                const card = board[i * COLS + j]
+                line.push(card.figure)
+            } else {
+                line.push(COVERED_CARD)
+            }
+            
             // line += board[i * COLS + j] // equivale a line = line + ' '
         }
         // console.log(line)
@@ -110,9 +117,11 @@ function printBoard(board) {
 }
 
 
-printBoard(board)
+printBoard(board, true)
 // ------- empieza el juego
-// 🟩mostrar las cartas cubiertas en filas y columnas
+// ✅mostrar las cartas cubiertas en filas y columnas
+printHeading('The memory game starts')
+printBoard(board)
 // 🟩mientras no haya terminado el juego
     // 🟩mostrar la ronda en la que estamos
     // 🟩seleccionar un par de cartas cubiertas al azar
