@@ -89,6 +89,8 @@ const game = {
     rounds: 0,
     // tablero
     board: [],
+    // nos sirve para gestionar la selección de cartas
+    availableIndexes: [],
     // setupGame nos permite configurar el juego
     setupGame: function(figures) {
         // Alternativa a popular el Array board
@@ -98,7 +100,22 @@ const game = {
             this.board.push(card)
             this.board.push(card)
         }
+        this.availableIndexes = this.board.map((e, index) => index)
+    },
+    pickSetOfCardsIndexesRandomly(){
+        let cardsIndexes = []
+        // elegir cartas
+        for(let i = 0; i < 2; i++) {
+            //mezclamos
+            shuffle(this.availableIndexes)
+            // pillamos una carta del tablero
+            const cardIndex = this.availableIndexes.pop()
+            // la ponemos en la lista de cartas seleccionadas
+            cardsIndexes.push(cardIndex)
+        }
+        return cardsIndexes
     }
+
 }
 
 // por cada fila
@@ -136,6 +153,8 @@ printBoard(game.board)
     // ✅mostrar la ronda en la que estamos
     printLine(`Playing round #${game.rounds}`)
     // 🟩seleccionar un par de cartas cubiertas al azar
+    let cardsIndexesSelected = game.pickSetOfCardsIndexesRandomly()
+    
     // 🟩mostar los indices de estas cartas seleccionadas
     // 🟩mostrar las cartas seleccionadas descubiertas en el tablero
     // 🟩si son la misma figura
