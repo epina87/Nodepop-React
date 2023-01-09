@@ -92,3 +92,24 @@ printBoard(board)
 // TODO Mostrarla por pantalla hasta que quede solucionado el juego.
 // TODO Una vez terminado el juego, se mostrarán algunas estadísticas.
 // TODO Intentaremos añadir un poco de inteligencia para que el juego sea más listo
+
+
+// ------- preparación del juego
+// generar figuras
+// generar cartas con las figuras disponibles
+// mezclar las cartas
+// mostrar las cartas dispuestas en filas y columnas
+// ------- empieza el juego
+// mostrar las cartas cubiertas en filas y columnas
+// mientras no haya terminado el juego
+    // mostrar la ronda en la que estamos
+    // seleccionar un par de cartas cubiertas al azar
+    // mostar los indices de estas cartas seleccionadas
+    // mostrar las cartas seleccionadas descubiertas en el tablero
+    // si son la misma figura
+        // mantenemos las cartas descubiertas
+    // si no son la misma figura
+        // volverlas a cubrir
+        // incrementar la ronda
+// ------- una vez terminado el juego
+// mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
