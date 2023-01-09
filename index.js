@@ -152,10 +152,11 @@ printBoard(game.board)
 // 🟩mientras no haya terminado el juego
     // ✅mostrar la ronda en la que estamos
     printLine(`Playing round #${game.rounds}`)
-    // 🟩seleccionar un par de cartas cubiertas al azar
+    // ✅seleccionar un par de cartas cubiertas al azar
     let cardsIndexesSelected = game.pickSetOfCardsIndexesRandomly()
     
-    // 🟩mostar los indices de estas cartas seleccionadas
+    // ✅mostar los indices de estas cartas seleccionadas
+    printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
     // 🟩mostrar las cartas seleccionadas descubiertas en el tablero
     // 🟩si son la misma figura
         // 🟩mantenemos las cartas descubiertas
