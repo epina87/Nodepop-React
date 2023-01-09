@@ -57,9 +57,10 @@ let board = []
 // Alternativa a popular el Array board
 for(let figure of FIGURES) {
     // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
-    // 🟩generar cartas con las figuras disponibles
-    board.push(figure)
-    board.push(figure)
+    // ✅generar cartas con las figuras disponibles
+    const card = {figure}
+    board.push(card)
+    board.push(card)
 }
 console.log('the board', board)
 // ✅mezclar las cartas
@@ -87,12 +88,18 @@ board = shuffle(board)
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
 function printBoard(board) {
     for(let i = 0; i < ROWS; i++) {
-        let line = ''
+        // let line = ''
+        let line = []
         for(let j = 0; j < COLS; j++){
             // line = line + ' '
-            line += board[i * COLS + j] // equivale a line = line + ' '
+            const card = board[i * COLS + j]
+            line.push(card.figure)
+            // line += board[i * COLS + j] // equivale a line = line + ' '
         }
-        console.log(line)
+        // console.log(line)
+        // "\t" es un tabulador
+        // "\n" es un salto de línea
+        console.log(line.join('\t')) // Array.join convierta a String. String.split(separador) genera un array a partir de String
     }
 }
 
