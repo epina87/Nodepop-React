@@ -27,6 +27,9 @@ function printHeading(text) {
     console.log(`========= ${text} =========`)
     console.log(`==========${pad}==========`)
 }
+function printLine(text) {
+    console.log(text)
+}
 // una funcion que nos permite randomizar los elementos de un array
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -82,6 +85,8 @@ const COVERED_CARD = '🃏'
 printHeading('Available figures')
 console.log(FIGURES)
 const game = {
+    // rondas
+    rounds: 0,
     // tablero
     board: [],
     // setupGame nos permite configurar el juego
@@ -128,7 +133,8 @@ printBoard(game.board, true)
 printHeading('The memory game starts')
 printBoard(game.board)
 // 🟩mientras no haya terminado el juego
-    // 🟩mostrar la ronda en la que estamos
+    // ✅mostrar la ronda en la que estamos
+    printLine(`Playing round #${game.rounds}`)
     // 🟩seleccionar un par de cartas cubiertas al azar
     // 🟩mostar los indices de estas cartas seleccionadas
     // 🟩mostrar las cartas seleccionadas descubiertas en el tablero
