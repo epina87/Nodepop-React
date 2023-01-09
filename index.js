@@ -31,8 +31,14 @@ const ROWS = 3
 const COLS = 2
 // figuras disponibles para las cartas
 const FIGURES = ['🤓', '🎃', '💚']
-console.log('Available figures: ', FIGURES)
-
+printHeading('Available figures')
+console.log(FIGURES)
+function printHeading(text) {
+    const pad = '='.repeat(text.length)
+    console.log(`==========${pad}==========`)
+    console.log(`========= ${text} =========`)
+    console.log(`==========${pad}==========`)
+}
 // tablero
 let board = []
 // por cada fila
@@ -62,7 +68,7 @@ for(let figure of FIGURES) {
     board.push(card)
     board.push(card)
 }
-console.log('the board', board)
+printHeading('the board')
 // ✅mezclar las cartas
 // una funcion que nos permite randomizar los elementos de un array
 function shuffle(array) {
