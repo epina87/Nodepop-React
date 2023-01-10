@@ -33,38 +33,38 @@ function printLine(text) {
 // una funcion que nos permite randomizar los elementos de un array
 // function shuffle(array) {
 //     let currentIndex = array.length,  randomIndex;
-  
+
 //     // While there remain elements to shuffle.
 //     while (currentIndex != 0) {
-  
+
 //       // Pick a remaining element.
 //       randomIndex = Math.floor(Math.random() * currentIndex);
 //       currentIndex--;
-  
+
 //       // And swap it with the current element.
 //       [array[currentIndex], array[randomIndex]] = [
 //         array[randomIndex], array[currentIndex]];
 //     }
-  
+
 //     return array;
 // }
-Array.prototype.shuffle = function() {
+Array.prototype.shuffle = function () {
     var i = this.length, j, temp;
-    if ( i == 0 ) return this;
-    while ( --i ) {
-       j = Math.floor( Math.random() * ( i + 1 ) );
-       temp = this[i];
-       this[i] = this[j];
-       this[j] = temp;
+    if (i == 0) return this;
+    while (--i) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
     }
     return this;
 }
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
 function printBoard(board, discovered = false) {
-    for(let i = 0; i < ROWS; i++) {
+    for (let i = 0; i < ROWS; i++) {
         // let line = ''
         let line = []
-        for(let j = 0; j < COLS; j++){
+        for (let j = 0; j < COLS; j++) {
             // line = line + ' '
             // nos permite almacenar en line la carta cubierta o descubierta
             const card = board[i * COLS + j]
@@ -73,7 +73,7 @@ function printBoard(board, discovered = false) {
             } else {
                 line.push(COVERED_CARD)
             }
-            
+
             // line += board[i * COLS + j] // equivale a line = line + ' '
         }
         // console.log(line)
@@ -103,9 +103,9 @@ const game = {
     // nos sirve para gestionar la selección de cartas
     availableIndexes: [],
     // setupGame nos permite configurar el juego
-    setupGame: function(figures) {
+    setupGame: function (figures) {
         // Alternativa a popular el Array board
-        for(let figure of figures) {
+        for (let figure of figures) {
             // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
             for (let i = 0; i < 2; i++) {
                 const card = {
@@ -125,11 +125,13 @@ const game = {
             */
         }
         this.availableIndexes = this.board.map((e, index) => index)
+        // ✅mezclar las cartas
+        this.board.shuffle()
     },
-    pickSetOfCardsIndexesRandomly(){
+    pickSetOfCardsIndexesRandomly() {
         let cardsIndexes = []
         // elegir cartas
-        for(let i = 0; i < 2; i++) {
+        for (let i = 0; i < 2; i++) {
             //mezclamos
             this.availableIndexes.shuffle()
             // pillamos una carta del tablero
@@ -156,10 +158,10 @@ const game = {
     areAllCardsTheSame(cardsIndexes) {
         // let theSameFlag = false;
         // recorrer array cardsIndexes
-            // si no satisface
-                // theSameFlag = theSameFlag && false
-            // si satisface
-                // theSameFlag = theSameFlag && true
+        // si no satisface
+        // theSameFlag = theSameFlag && false
+        // si satisface
+        // theSameFlag = theSameFlag && true
         // return theSameFlag
 
         // Recuperamos las cards del tablero según su índice
@@ -172,11 +174,35 @@ const game = {
         //return selectedCards.every(card => card.figure === firstCard.figure)
         return selectedCards.every(card => card.figure === firstCard.figure)
     },
-    hasTheGameEnded(){
+    hasTheGameEnded() {
         // return this.board.every(card => card.discovered)
         return this.availableIndexes.length === 0
-    }
+    },
+    start() {
+        // ✅mientras no haya terminado el juego
+        while (!this.hasTheGameEnded()) {
+            // ✅mostrar la ronda en la que estamos
+            printLine(`Playing round #${this.rounds}`)
+            // ✅seleccionar un par de cartas cubiertas al azar
+            let cardsIndexesSelected = this.pickSetOfCardsIndexesRandomly()
 
+            // ✅mostar los indices de estas cartas seleccionadas
+            printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
+            // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+            this.discoverPickedCards(cardsIndexesSelected)
+            printBoard(this.board)
+            // ✅si no son la misma figura
+            if (!this.areAllCardsTheSame(cardsIndexesSelected)) {
+                // ✅volverlas a cubrir
+                this.unwindPickedCards(cardsIndexesSelected)
+                // ✅incrementar la ronda
+                this.rounds++
+            }
+            // ✅si son la misma figura
+            // ✅mantenemos las cartas descubiertas
+
+        }
+    }
 }
 
 // por cada fila
@@ -202,37 +228,16 @@ const game = {
 // ✅generar cartas con las figuras disponibles
 game.setupGame(FIGURES)
 printHeading('the board')
-// ✅mezclar las cartas
-game.board.shuffle()
+
 // ✅mostrar las cartas dispuestas en filas y columnas
 printBoard(game.board, true)
 // ------- empieza el juego
 // ✅mostrar las cartas cubiertas en filas y columnas
 printHeading('The memory game starts')
 printBoard(game.board)
-// 🟩mientras no haya terminado el juego
-while(!game.hasTheGameEnded()){
-    // ✅mostrar la ronda en la que estamos
-    printLine(`Playing round #${game.rounds}`)
-    // ✅seleccionar un par de cartas cubiertas al azar
-    let cardsIndexesSelected = game.pickSetOfCardsIndexesRandomly()
-    
-    // ✅mostar los indices de estas cartas seleccionadas
-    printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
-    // ✅mostrar las cartas seleccionadas descubiertas en el tablero
-    game.discoverPickedCards(cardsIndexesSelected)
-    printBoard(game.board)
-    // ✅si no son la misma figura
-    if (!game.areAllCardsTheSame(cardsIndexesSelected)){
-        // ✅volverlas a cubrir
-        game.unwindPickedCards(cardsIndexesSelected)
-        // ✅incrementar la ronda
-        game.rounds++
-    } 
-    // ✅si son la misma figura
-    // ✅mantenemos las cartas descubiertas
-    
-}
-    
+game.start()
+
 // ------- una vez terminado el juego
-// 🟩mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
+// ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
+printLine('')
+printLine(`The game has ended! Rounds needed: ${game.rounds}`)
