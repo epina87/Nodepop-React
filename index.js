@@ -144,6 +144,25 @@ const game = {
             const card = this.board[cardIndex]
             card.discovered = true
         })
+    },
+    areAllCardsTheSame(cardsIndexes) {
+        // let theSameFlag = false;
+        // recorrer array cardsIndexes
+            // si no satisface
+                // theSameFlag = theSameFlag && false
+            // si satisface
+                // theSameFlag = theSameFlag && true
+        // return theSameFlag
+
+        // Recuperamos las cards del tablero según su índice
+        const selectedCards = cardsIndexes.map(cardIndex => this.board[cardIndex])
+        // 👀 esto solamente funciona si usamos como parametro 2 cartas a seleccionar
+        //return selectedCards[0].figure === selectedCards[1].figure
+        const firstCard = selectedCards[0]
+        // 🤯 Esto NO FUNCIONA PORQUE ESTAMOS COMPARANDO OBJETOS A PELO!!
+        // POR LO TANTO ESTA COMPARANDO 2 REFERENCIAS QUE SON DISTINTAS!!!!
+        //return selectedCards.every(card => card.figure === firstCard.figure)
+        return selectedCards.every(card => card.figure === firstCard.figure)
     }
 
 }
@@ -190,8 +209,11 @@ printBoard(game.board)
     // ✅mostrar las cartas seleccionadas descubiertas en el tablero
     game.discoverPickedCards(cardsIndexesSelected)
     printBoard(game.board)
-    // 🟩si son la misma figura
+    // ✅si son la misma figura
+    if (game.areAllCardsTheSame(cardsIndexesSelected)){
         // 🟩mantenemos las cartas descubiertas
+
+    }
     // 🟩si no son la misma figura
         // 🟩volverlas a cubrir
         // 🟩incrementar la ronda
