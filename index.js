@@ -171,6 +171,10 @@ const game = {
         // POR LO TANTO ESTA COMPARANDO 2 REFERENCIAS QUE SON DISTINTAS!!!!
         //return selectedCards.every(card => card.figure === firstCard.figure)
         return selectedCards.every(card => card.figure === firstCard.figure)
+    },
+    hasTheGameEnded(){
+        // return this.board.every(card => card.discovered)
+        return this.availableIndexes.length === 0
     }
 
 }
@@ -207,6 +211,7 @@ printBoard(game.board, true)
 printHeading('The memory game starts')
 printBoard(game.board)
 // 🟩mientras no haya terminado el juego
+while(!game.hasTheGameEnded()){
     // ✅mostrar la ronda en la que estamos
     printLine(`Playing round #${game.rounds}`)
     // ✅seleccionar un par de cartas cubiertas al azar
@@ -226,6 +231,8 @@ printBoard(game.board)
     } 
     // ✅si son la misma figura
     // ✅mantenemos las cartas descubiertas
+    
+}
     
 // ------- una vez terminado el juego
 // 🟩mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
