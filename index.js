@@ -1,4 +1,5 @@
-import {printBoard, printHeading, printLine} from './printer.js'
+import usePrinter from './printer.js'
+const {printBoard, printHeading, printLine} = usePrinter()
 // import allPrinters from './printer.js' // peta porque no tenemos ningun "export default" en printer.js
 import {FIGURES} from './data.js'
 import game from './game.js'

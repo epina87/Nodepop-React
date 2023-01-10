@@ -1,4 +1,5 @@
-import { printBoard, printLine } from "./printer.js"
+import usePrinter from "./printer.js"
+const {printBoard, printLine} = usePrinter()
 
 // export const game = {
 export default {
