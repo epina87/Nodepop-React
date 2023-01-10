@@ -23,9 +23,12 @@ console.log(legolas instanceof Personaje)
 console.log(legolas instanceof Object)
 
 // Objeto literal
-let saruman = { name: 'saruman' }
-saruman.__proto__ = new Personaje()
-console.log(saruman instanceof Personaje)
+// let saruman = { name: 'saruman' }
+// saruman.__proto__ = new Personaje()
+// PARA PODER ALTERAR EL PROTOTIPO DE FORMA EFECTIVA A LOS OBJETOS LITERALES
+let saruman = {name:'saruman'}
+Object.setPrototypeOf(saruman, new Personaje);
+console.log('saruman instanceof Personaje', saruman instanceof Personaje)
 console.log(saruman instanceof Object)
 
 function atacar(personaje, callback) { //   si callback === attackWithSword

@@ -31,22 +31,33 @@ function printLine(text) {
     console.log(text)
 }
 // una funcion que nos permite randomizar los elementos de un array
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
+// function shuffle(array) {
+//     let currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+//     // While there remain elements to shuffle.
+//     while (currentIndex != 0) {
   
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+//       // Pick a remaining element.
+//       randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex--;
   
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+//       // And swap it with the current element.
+//       [array[currentIndex], array[randomIndex]] = [
+//         array[randomIndex], array[currentIndex]];
+//     }
+  
+//     return array;
+// }
+Array.prototype.shuffle = function() {
+    var i = this.length, j, temp;
+    if ( i == 0 ) return this;
+    while ( --i ) {
+       j = Math.floor( Math.random() * ( i + 1 ) );
+       temp = this[i];
+       this[i] = this[j];
+       this[j] = temp;
     }
-  
-    return array;
+    return this;
 }
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
 function printBoard(board, discovered = false) {
@@ -120,7 +131,7 @@ const game = {
         // elegir cartas
         for(let i = 0; i < 2; i++) {
             //mezclamos
-            shuffle(this.availableIndexes)
+            this.availableIndexes.shuffle()
             // pillamos una carta del tablero
             const cardIndex = this.availableIndexes.pop()
             // la ponemos en la lista de cartas seleccionadas
@@ -161,7 +172,7 @@ const game = {
 game.setupGame(FIGURES)
 printHeading('the board')
 // ✅mezclar las cartas
-game.board = shuffle(game.board)
+game.board.shuffle()
 // ✅mostrar las cartas dispuestas en filas y columnas
 printBoard(game.board, true)
 // ------- empieza el juego
@@ -176,7 +187,7 @@ printBoard(game.board)
     
     // ✅mostar los indices de estas cartas seleccionadas
     printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
-    // 🟩mostrar las cartas seleccionadas descubiertas en el tablero
+    // ✅mostrar las cartas seleccionadas descubiertas en el tablero
     game.discoverPickedCards(cardsIndexesSelected)
     printBoard(game.board)
     // 🟩si son la misma figura
