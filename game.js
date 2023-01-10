@@ -32,7 +32,8 @@ export default {
         }
         this.availableIndexes = this.board.map((e, index) => index)
         // ✅mezclar las cartas
-        this.board.shuffle()
+        // Usamos sort de Math.random para mezclar elementos del array
+        this.board.sort( () => .5 - Math.random() );
     },
     pickSetOfCardsIndexesRandomly() {
         let cardsIndexes = []
