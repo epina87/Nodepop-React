@@ -217,15 +217,15 @@ printBoard(game.board)
     // ✅mostrar las cartas seleccionadas descubiertas en el tablero
     game.discoverPickedCards(cardsIndexesSelected)
     printBoard(game.board)
-    // ✅si son la misma figura
-    if (game.areAllCardsTheSame(cardsIndexesSelected)){
-        // ✅mantenemos las cartas descubiertas
-        
-    } else {
     // ✅si no son la misma figura
+    if (!game.areAllCardsTheSame(cardsIndexesSelected)){
         // ✅volverlas a cubrir
         game.unwindPickedCards(cardsIndexesSelected)
-        // 🟩incrementar la ronda
-    }
+        // ✅incrementar la ronda
+        game.rounds++
+    } 
+    // ✅si son la misma figura
+    // ✅mantenemos las cartas descubiertas
+    
 // ------- una vez terminado el juego
 // 🟩mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
