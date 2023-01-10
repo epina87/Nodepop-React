@@ -82,4 +82,4 @@ game.start()
 // ------- una vez terminado el juego
 // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
 printLine('')
-printLine(`The game has ended! Rounds needed: ${game.rounds}`)
+printLine('The game has ended! Rounds needed: ', game.rounds)

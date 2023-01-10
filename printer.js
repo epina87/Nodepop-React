@@ -6,8 +6,8 @@ export function printHeading(text) {
     console.log(`========= ${text} =========`)
     console.log(`==========${pad}==========`)
 }
-export function printLine(text) {
-    console.log(text)
+export function printLine(...text) {
+    console.log(...text)
 }
 // Función que nos sirve para poder mostrar por pantalla las cartas en filas y columnas
 export function printBoard(board, discovered = false) {
