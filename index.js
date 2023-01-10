@@ -145,6 +145,14 @@ const game = {
             card.discovered = true
         })
     },
+    unwindPickedCards(cardsIndexes) {
+        cardsIndexes.forEach(cardIndex => {
+            const card = this.board[cardIndex]
+            card.discovered = false
+            // Necesitamos volver a poner el indice en el listado de disponibles
+            this.availableIndexes.push(cardIndex)
+        })
+    },
     areAllCardsTheSame(cardsIndexes) {
         // let theSameFlag = false;
         // recorrer array cardsIndexes
@@ -211,11 +219,13 @@ printBoard(game.board)
     printBoard(game.board)
     // ✅si son la misma figura
     if (game.areAllCardsTheSame(cardsIndexesSelected)){
-        // 🟩mantenemos las cartas descubiertas
-
-    }
-    // 🟩si no son la misma figura
-        // 🟩volverlas a cubrir
+        // ✅mantenemos las cartas descubiertas
+        
+    } else {
+    // ✅si no son la misma figura
+        // ✅volverlas a cubrir
+        game.unwindPickedCards(cardsIndexesSelected)
         // 🟩incrementar la ronda
+    }
 // ------- una vez terminado el juego
 // 🟩mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
