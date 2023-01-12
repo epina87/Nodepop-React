@@ -97,8 +97,27 @@ try {
     const sortedCardsDesc = game.board.filter(e => true).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
     console.log(`The card ${sortedCardsDesc[0].figure} had max turns: ${sortedCardsDesc[0].timesTurned}`)
 
-    // 🟩Qué carta y en qué posición ha sido girada más veces
-
+    // ✅Qué carta y en qué posición ha sido girada más veces
+    // OPCION 4 (ES LA MEJOR PORQUE RECORRE UNA SOLA VEZ EL BUCLE)
+    const cardWithMaxTurns = game.board.reduce((prev, curr) => 
+        // {
+        //     if (curr.timesTurned > prev.timesTurned) {
+        //         return curr 
+        //     } else {
+        //         return prev
+        //     }
+        // }
+        // Sintaxis del operador ternario
+        ((curr.timesTurned > prev.timesTurned) ? curr : prev)
+    , {timesTurned: 0})
+    const cardMaxTimesTurnedIndex = game.board.findIndex(card => 
+        card.figure === cardWithMaxTurns.figure && 
+        card.timesTurned === cardWithMaxTurns.timesTurned
+    ) 
+    console.log(`The card ${cardWithMaxTurns.figure} at index ${cardMaxTimesTurnedIndex} had max turns: ${cardWithMaxTurns.timesTurned}`)
+    let totalCardsTurns = game.board.reduce((prev, curr) => prev + curr.timesTurned, 0)
+    console.log(`Total cards turns: ${totalCardsTurns}`)
+    
     // 🟩Evolución del juego al 0%, 25%, 50%, 75%, 100%
 } catch (e) {
     console.info("Hemos tenido un error 😭")
