@@ -10,6 +10,8 @@ export default {
     board: [],
     // nos sirve para gestionar la selección de cartas
     availableIndexes: [],
+    // nos sirve para hacer un registro completo del juego
+    gameLog: [],
     // setupGame nos permite configurar el juego
     setupGame: function (figures) {
         // Comprobar si número de parejas < número de figuras disponibles
@@ -111,6 +113,10 @@ export default {
             // ✅mostrar las cartas seleccionadas descubiertas en el tablero
             this.discoverPickedCards(cardsIndexesSelected)
             printBoard(this.board)
+            
+            // registrar la rondan en el gameLog
+            this.registerGameLog(this.board, cardsIndexesSelected, this.rounds)
+
             // ✅si no son la misma figura
             if (!this.areAllCardsTheSame(cardsIndexesSelected)) {
                 // ✅volverlas a cubrir
@@ -120,7 +126,21 @@ export default {
             }
             // ✅si son la misma figura
             // ✅mantenemos las cartas descubiertas
-
         }
+    },
+    registerGameLog(board, cardsIndexes, rounds) {
+        this.gameLog.push({
+            // board, // 🤯 Esto nos genera un problema con las referencias!! El juego es el mismo al 0% que al 100%!!!!
+            // board: [...board], // 🤯🤯 No funciona!!!
+            // board: board.map(e => Object.assign({}, e)), // OPCION 1
+            board: board.map(e => ({...e})), // OPCION 2
+            // board: JSON.parse(JSON.stringify(board)), // OPCION 3
+            cardIndexesSelected: cardsIndexes,
+            rounds
+        })
+    },
+    getLog(gameLog, percentage) {
+        const index = Math.round(((gameLog.length - 1) * percentage) / 100)
+        return gameLog[index]
     }
 }

@@ -118,7 +118,17 @@ try {
     let totalCardsTurns = game.board.reduce((prev, curr) => prev + curr.timesTurned, 0)
     console.log(`Total cards turns: ${totalCardsTurns}`)
     
-    // 🟩Evolución del juego al 0%, 25%, 50%, 75%, 100%
+    // ✅Evolución del juego al 0%, 25%, 50%, 75%, 100%
+    const percentages = [0, 25, 50, 75, 100]
+    for (let percentage of percentages) {
+        const log = game.getLog(game.gameLog, percentage)
+        printHeading(`Log at ${percentage}%`)
+        printBoard(log.board)
+        printLine(`Played cards indexes: ${log.cardIndexesSelected}`)
+        for(let cardIndex of log.cardIndexesSelected) {
+            printLine(`card ${cardIndex} has been flipped ${log.board[cardIndex].timesTurned}`)
+        }
+    }
 } catch (e) {
     console.info("Hemos tenido un error 😭")
     console.error(e)
