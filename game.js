@@ -1,6 +1,4 @@
-import usePrinter from "./printer.js"
 import {ROWS, COLS, CARDS_PER_SET} from "./data.js"
-const {printBoard, printLine} = usePrinter()
 
 // export const game = {
 export default {
@@ -25,7 +23,7 @@ export default {
 
         // Alternativa a popular el Array board
         for (let figure of figures) {
-            // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
+            // DONE Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
             for (let i = 0; i < CARDS_PER_SET; i++) {
                 const card = {
                     figure,
@@ -103,16 +101,12 @@ export default {
     start() {
         // ✅mientras no haya terminado el juego
         while (!this.hasTheGameEnded()) {
-            // ✅mostrar la ronda en la que estamos
-            printLine(`Playing round #${this.rounds}`)
+            
             // ✅seleccionar un par de cartas cubiertas al azar
             let cardsIndexesSelected = this.pickSetOfCardsIndexesRandomly()
 
-            // ✅mostar los indices de estas cartas seleccionadas
-            printLine(`Selected cards indexes: ${cardsIndexesSelected}`)
-            // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+            // marcar en el tablero las cartas descubiertas
             this.discoverPickedCards(cardsIndexesSelected)
-            printBoard(this.board)
             
             // registrar la rondan en el gameLog
             this.registerGameLog(this.board, cardsIndexesSelected, this.rounds)

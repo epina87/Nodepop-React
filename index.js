@@ -6,7 +6,7 @@ import game from './game.js'
 
 // DONE Generar selección de cartas de forma aleatoria.
 // DONE Mostrarla por pantalla hasta que quede solucionado el juego.
-// TODO Una vez terminado el juego, se mostrarán algunas estadísticas.
+// DONE Una vez terminado el juego, se mostrarán algunas estadísticas.
 // TODO Intentaremos añadir un poco de inteligencia para que el juego sea más listo
 
 // una funcion que nos permite randomizar los elementos de un array
@@ -43,7 +43,7 @@ try {
 
     // ------- preparación del juego
     // ✅generar figuras
-    // TODO Mostrar el tablero inicial.
+    // DONE Mostrar el tablero inicial.
 
     printHeading('Available figures')
     console.log(FIGURES)
@@ -80,6 +80,17 @@ try {
     printHeading('The memory game starts')
     printBoard(game.board)
     game.start()
+
+    for (let log of game.gameLog) {
+        // ✅mostrar la ronda en la que estamos
+        printLine(`Playing round #${log.rounds}`)
+        // ✅mostar los indices de estas cartas seleccionadas
+        printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
+        // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+        printBoard(log.board)
+
+            
+    }
 
     // ------- una vez terminado el juego
     // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
