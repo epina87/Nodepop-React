@@ -82,79 +82,85 @@ try {
     game.start()
 
     let i = 0
-    const intervalID = setInterval(() => {
-        let log = game.gameLog[i]
-        // ✅mostrar la ronda en la que estamos
-        printLine(`Playing round #${log.rounds}`)
-        // ✅mostar los indices de estas cartas seleccionadas
-        printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
-        // ✅mostrar las cartas seleccionadas descubiertas en el tablero
-        printBoard(log.board)
-        i++
-        if (i === game.gameLog.length) {
-            clearInterval(intervalID)
-        }
-    },1000)
+    let promise = new Promise((resolve, reject) => {
+        const intervalID = setInterval(() => {
+            let log = game.gameLog[i]
+            // ✅mostrar la ronda en la que estamos
+            printLine(`Playing round #${log.rounds}`)
+            // ✅mostar los indices de estas cartas seleccionadas
+            printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
+            // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+            printBoard(log.board)
+            i++
+            if (i === game.gameLog.length) {
+                clearInterval(intervalID)
+                resolve('done')
+            }
+        }, 1000)
+    }).then(value => {
 
-    // for (let log of game.gameLog) {
-    //     // ✅mostrar la ronda en la que estamos
-    //     printLine(`Playing round #${log.rounds}`)
-    //     // ✅mostar los indices de estas cartas seleccionadas
-    //     printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
-    //     // ✅mostrar las cartas seleccionadas descubiertas en el tablero
-    //     printBoard(log.board)
 
-            
-    // }
+        // for (let log of game.gameLog) {
+        //     // ✅mostrar la ronda en la que estamos
+        //     printLine(`Playing round #${log.rounds}`)
+        //     // ✅mostar los indices de estas cartas seleccionadas
+        //     printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
+        //     // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+        //     printBoard(log.board)
 
-    // ------- una vez terminado el juego
-    // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
-    printLine('')
-    printLine('The game has ended! Rounds needed: ', game.rounds)
-    // ✅Qué carta ha sido girada más veces
-    // 👀 OJO PORQUE SORT ALTERA EL ARRAY!!!
-    //const sortedCardsDesc = game.board.sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
-    // Por cada elemento de board devuelvo un card Objeto nuevo gracias a map
-    // OPCION 1
-    // const sortedCardsDesc = game.board.map(e => e).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
-    // OPCION 2
-    //const sortedCardsDesc = [...game.board].sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
-    // OPCION 3
-    const sortedCardsDesc = game.board.filter(e => true).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
-    console.log(`The card ${sortedCardsDesc[0].figure} had max turns: ${sortedCardsDesc[0].timesTurned}`)
 
-    // ✅Qué carta y en qué posición ha sido girada más veces
-    // OPCION 4 (ES LA MEJOR PORQUE RECORRE UNA SOLA VEZ EL BUCLE)
-    const cardWithMaxTurns = game.board.reduce((prev, curr) => 
-        // {
-        //     if (curr.timesTurned > prev.timesTurned) {
-        //         return curr 
-        //     } else {
-        //         return prev
-        //     }
         // }
-        // Sintaxis del operador ternario
-        ((curr.timesTurned > prev.timesTurned) ? curr : prev)
-    , {timesTurned: 0})
-    const cardMaxTimesTurnedIndex = game.board.findIndex(card => 
-        card.figure === cardWithMaxTurns.figure && 
-        card.timesTurned === cardWithMaxTurns.timesTurned
-    ) 
-    console.log(`The card ${cardWithMaxTurns.figure} at index ${cardMaxTimesTurnedIndex} had max turns: ${cardWithMaxTurns.timesTurned}`)
-    let totalCardsTurns = game.board.reduce((prev, curr) => prev + curr.timesTurned, 0)
-    console.log(`Total cards turns: ${totalCardsTurns}`)
-    
-    // ✅Evolución del juego al 0%, 25%, 50%, 75%, 100%
-    const percentages = [0, 25, 50, 75, 100]
-    for (let percentage of percentages) {
-        const log = game.getLog(game.gameLog, percentage)
-        printHeading(`Log at ${percentage}%`)
-        printBoard(log.board)
-        printLine(`Played cards indexes: ${log.cardIndexesSelected}`)
-        for(let cardIndex of log.cardIndexesSelected) {
-            printLine(`card ${cardIndex} has been flipped ${log.board[cardIndex].timesTurned}`)
+
+        // ------- una vez terminado el juego
+        // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
+        printLine('')
+        printLine('The game has ended! Rounds needed: ', game.rounds)
+        // ✅Qué carta ha sido girada más veces
+        // 👀 OJO PORQUE SORT ALTERA EL ARRAY!!!
+        //const sortedCardsDesc = game.board.sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+        // Por cada elemento de board devuelvo un card Objeto nuevo gracias a map
+        // OPCION 1
+        // const sortedCardsDesc = game.board.map(e => e).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+        // OPCION 2
+        //const sortedCardsDesc = [...game.board].sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+        // OPCION 3
+        const sortedCardsDesc = game.board.filter(e => true).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+        console.log(`The card ${sortedCardsDesc[0].figure} had max turns: ${sortedCardsDesc[0].timesTurned}`)
+
+        // ✅Qué carta y en qué posición ha sido girada más veces
+        // OPCION 4 (ES LA MEJOR PORQUE RECORRE UNA SOLA VEZ EL BUCLE)
+        const cardWithMaxTurns = game.board.reduce((prev, curr) =>
+            // {
+            //     if (curr.timesTurned > prev.timesTurned) {
+            //         return curr 
+            //     } else {
+            //         return prev
+            //     }
+            // }
+            // Sintaxis del operador ternario
+            ((curr.timesTurned > prev.timesTurned) ? curr : prev)
+            , { timesTurned: 0 })
+        const cardMaxTimesTurnedIndex = game.board.findIndex(card =>
+            card.figure === cardWithMaxTurns.figure &&
+            card.timesTurned === cardWithMaxTurns.timesTurned
+        )
+        console.log(`The card ${cardWithMaxTurns.figure} at index ${cardMaxTimesTurnedIndex} had max turns: ${cardWithMaxTurns.timesTurned}`)
+        let totalCardsTurns = game.board.reduce((prev, curr) => prev + curr.timesTurned, 0)
+        console.log(`Total cards turns: ${totalCardsTurns}`)
+
+        // ✅Evolución del juego al 0%, 25%, 50%, 75%, 100%
+        const percentages = [0, 25, 50, 75, 100]
+        for (let percentage of percentages) {
+            const log = game.getLog(game.gameLog, percentage)
+            printHeading(`Log at ${percentage}%`)
+            printBoard(log.board)
+            printLine(`Played cards indexes: ${log.cardIndexesSelected}`)
+            for (let cardIndex of log.cardIndexesSelected) {
+                printLine(`card ${cardIndex} has been flipped ${log.board[cardIndex].timesTurned}`)
+            }
         }
-    }
+    })
+
 } catch (e) {
     console.info("Hemos tenido un error 😭")
     console.error(e)
