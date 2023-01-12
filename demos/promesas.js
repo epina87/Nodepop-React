@@ -19,3 +19,19 @@ console.log('rejectedPromise', rejectedPromise)
 setTimeout(() => {
     console.log(rejectedPromise, resolvedPromise)
 }, 200)
+
+let delayedPromise = () => new Promise((resolve, reject) => {
+    const result = Math.random()
+    setTimeout(() => {
+        result < 0.5 ? resolve({ result, icon:'👌' }) : reject({result, icon: '💩'})
+    }, result * 1000)
+})
+
+try {
+    const response = await delayedPromise()
+    console.log(response)
+} catch (error){
+    console.error(error)
+}
+
+console.log('FIIIIN')
