@@ -85,6 +85,21 @@ try {
     // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
     printLine('')
     printLine('The game has ended! Rounds needed: ', game.rounds)
+    // ✅Qué carta ha sido girada más veces
+    // 👀 OJO PORQUE SORT ALTERA EL ARRAY!!!
+    //const sortedCardsDesc = game.board.sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+    // Por cada elemento de board devuelvo un card Objeto nuevo gracias a map
+    // OPCION 1
+    // const sortedCardsDesc = game.board.map(e => e).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+    // OPCION 2
+    //const sortedCardsDesc = [...game.board].sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+    // OPCION 3
+    const sortedCardsDesc = game.board.filter(e => true).sort((cardA, cardB) => cardB.timesTurned - cardA.timesTurned)
+    console.log(`The card ${sortedCardsDesc[0].figure} had max turns: ${sortedCardsDesc[0].timesTurned}`)
+
+    // 🟩Qué carta y en qué posición ha sido girada más veces
+
+    // 🟩Evolución del juego al 0%, 25%, 50%, 75%, 100%
 } catch (e) {
     console.info("Hemos tenido un error 😭")
     console.error(e)

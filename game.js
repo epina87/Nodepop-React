@@ -27,7 +27,8 @@ export default {
             for (let i = 0; i < CARDS_PER_SET; i++) {
                 const card = {
                     figure,
-                    discovered: false
+                    discovered: false,
+                    timesTurned: 0
                 }
                 this.board.push(card)
             }
@@ -63,6 +64,7 @@ export default {
         cardsIndexes.forEach(cardIndex => {
             const card = this.board[cardIndex]
             card.discovered = true
+            card.timesTurned++
         })
     },
     unwindPickedCards(cardsIndexes) {
