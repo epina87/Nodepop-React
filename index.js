@@ -81,16 +81,31 @@ try {
     printBoard(game.board)
     game.start()
 
-    for (let log of game.gameLog) {
+    let i = 0
+    const intervalID = setInterval(() => {
+        let log = game.gameLog[i]
         // ✅mostrar la ronda en la que estamos
         printLine(`Playing round #${log.rounds}`)
         // ✅mostar los indices de estas cartas seleccionadas
         printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
         // ✅mostrar las cartas seleccionadas descubiertas en el tablero
         printBoard(log.board)
+        i++
+        if (i === game.gameLog.length) {
+            clearInterval(intervalID)
+        }
+    },1000)
+
+    // for (let log of game.gameLog) {
+    //     // ✅mostrar la ronda en la que estamos
+    //     printLine(`Playing round #${log.rounds}`)
+    //     // ✅mostar los indices de estas cartas seleccionadas
+    //     printLine(`Selected cards indexes: ${log.cardIndexesSelected}`)
+    //     // ✅mostrar las cartas seleccionadas descubiertas en el tablero
+    //     printBoard(log.board)
 
             
-    }
+    // }
 
     // ------- una vez terminado el juego
     // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
