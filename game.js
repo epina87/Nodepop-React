@@ -1,4 +1,5 @@
 import usePrinter from "./printer.js"
+import {ROWS, COLS, CARDS_PER_SET} from "./data.js"
 const {printBoard, printLine} = usePrinter()
 
 // export const game = {
@@ -11,10 +12,19 @@ export default {
     availableIndexes: [],
     // setupGame nos permite configurar el juego
     setupGame: function (figures) {
+        // Comprobar si número de parejas < número de figuras disponibles
+        if((ROWS * COLS) / CARDS_PER_SET > figures.length) {
+            throw Error("Hey! You need more figures to play the game!!")
+        }
+        // Comprobar que filas x columnas es múltiplo de cards per set
+        if((ROWS * COLS) % CARDS_PER_SET !== 0) {
+            throw Error("Wow, the board you are trying to set up is impossible to make 🤔")
+        }
+
         // Alternativa a popular el Array board
         for (let figure of figures) {
             // TODO Se puede mejorar teniendo en cuenta que podriamos jugar con trios de cartas o cuartetos, etc
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < CARDS_PER_SET; i++) {
                 const card = {
                     figure,
                     discovered: false
@@ -39,7 +49,7 @@ export default {
     pickSetOfCardsIndexesRandomly() {
         let cardsIndexes = []
         // elegir cartas
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < CARDS_PER_SET; i++) {
             //mezclamos
             this.availableIndexes.shuffle()
             // pillamos una carta del tablero

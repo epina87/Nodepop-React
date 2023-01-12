@@ -1,7 +1,7 @@
 import usePrinter from './printer.js'
-const {printBoard, printHeading, printLine} = usePrinter()
+const { printBoard, printHeading, printLine } = usePrinter()
 // import allPrinters from './printer.js' // petaría si no tenemos ningun "export default" en printer.js
-import {FIGURES} from './data.js'
+import { FIGURES } from './data.js'
 import game from './game.js'
 
 // DONE Generar selección de cartas de forma aleatoria.
@@ -39,48 +39,53 @@ Array.prototype.shuffle = function () {
     return this;
 }
 
+try {
 
-// ------- preparación del juego
-// ✅generar figuras
-// TODO Mostrar el tablero inicial.
+    // ------- preparación del juego
+    // ✅generar figuras
+    // TODO Mostrar el tablero inicial.
 
-printHeading('Available figures')
-console.log(FIGURES)
+    printHeading('Available figures')
+    console.log(FIGURES)
 
 
-// por cada fila
-// for(let i = 0; i < ROWS; i++) {
-//     // una fila cualquiera
-//     let row = []
-//     // por cada columna
-//     for(let j = 0; j < COLS; j++) {
-//         //console.log(j, i)
-//         row[j] = FIGURES[i]
-//     }
-//     board[i] = row
-// }
+    // por cada fila
+    // for(let i = 0; i < ROWS; i++) {
+    //     // una fila cualquiera
+    //     let row = []
+    //     // por cada columna
+    //     for(let j = 0; j < COLS; j++) {
+    //         //console.log(j, i)
+    //         row[j] = FIGURES[i]
+    //     }
+    //     board[i] = row
+    // }
 
-// for(let i = 0; i < ROWS * COLS / 2; i++) { // 3 * 2 / 2 === 3, la misma dimensión que FIGURES.length
-//     for (let j = 0; j < 2; j++) { // Por cada figura, insertamos 2 veces en el mazo
-//         // board[j + i * ROWS] = FIGURES[j] // intentadlo vosotros
-//         const figure = FIGURES[i]
-//         board.push(figure) // Si solamente queremos añadir elementos al array, lo hacemos con Array.push
-//     }
-// }
+    // for(let i = 0; i < ROWS * COLS / 2; i++) { // 3 * 2 / 2 === 3, la misma dimensión que FIGURES.length
+    //     for (let j = 0; j < 2; j++) { // Por cada figura, insertamos 2 veces en el mazo
+    //         // board[j + i * ROWS] = FIGURES[j] // intentadlo vosotros
+    //         const figure = FIGURES[i]
+    //         board.push(figure) // Si solamente queremos añadir elementos al array, lo hacemos con Array.push
+    //     }
+    // }
 
-// ✅generar cartas con las figuras disponibles
-game.setupGame(FIGURES)
-printHeading('the board')
+    // ✅generar cartas con las figuras disponibles
+    game.setupGame(FIGURES)
+    printHeading('the board')
 
-// ✅mostrar las cartas dispuestas en filas y columnas
-printBoard(game.board, true)
-// ------- empieza el juego
-// ✅mostrar las cartas cubiertas en filas y columnas
-printHeading('The memory game starts')
-printBoard(game.board)
-game.start()
+    // ✅mostrar las cartas dispuestas en filas y columnas
+    printBoard(game.board, true)
+    // ------- empieza el juego
+    // ✅mostrar las cartas cubiertas en filas y columnas
+    printHeading('The memory game starts')
+    printBoard(game.board)
+    game.start()
 
-// ------- una vez terminado el juego
-// ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
-printLine('')
-printLine('The game has ended! Rounds needed: ', game.rounds)
+    // ------- una vez terminado el juego
+    // ✅mostrar que ha terminado el juego diciendo cuántas rondas hemos necesitado
+    printLine('')
+    printLine('The game has ended! Rounds needed: ', game.rounds)
+} catch (e) {
+    console.info("Hemos tenido un error 😭")
+    console.error(e)
+}
