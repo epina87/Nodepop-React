@@ -1,0 +1,1116 @@
+
+/* Añadimos las fuentes */
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Hubballi&family=Open+Sans:wght@300;400&family=Orbitron:wght@400;500;700&family=Supermercado+One&family=Tapestry&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Hubballi&family=Open+Sans:wght@300;400&family=Orbitron:wght@400;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Supermercado+One&family=Tapestry&display=swap');
+
+
+
+body {
+  font-family: 'Roboto', sans-serif;/*Añadimos la tipografía de la letra*/
+  margin: 0px; /*Quitamos el margen*/
+  padding: 0px; /*Quitamos espacio interno*/
+  font-size: 18px; /*Añadimos tamaño de la letra*/
+  color: #0c0c0d; /*Aplicamos color al texto #0c0c0d */
+  background-color: #FFFFFF; /*Añadimos color de fondo*/
+}
+
+main, section{
+	width: 100%; /*Añadimos ancho del 100%*/
+	justify-content: center;/*centramos el contenido*/
+ }
+
+.container{
+  max-width: 1140px;/*Aplicamos ancho máximo de 1140px*/
+  margin:0 auto;/*Centramos contenido horizontalmente utilizando el margen*/    
+}
+
+
+
+/*----------------------*/
+/*Cabezera*/
+/*----------------------*/
+
+
+header{
+  width: 100%;/*Añadimos ancho del 100%*/
+  height: 90px;/*Añadimos alto de 90px*/
+}
+
+.top_fixed{
+  
+  width: 100%;  /*Añadimos ancho del 100%*/
+  background-color: #FFFFFF;   /*Añadimos color de fondo */
+  position: fixed;  /*fijamos de forma estática la cuadricula */
+  top: 0;  /*Añadimos la distancia superior “0 ” a la cuadricula fija */
+  left: 0;   /*Añadimos la distancia derecha “0 ” a la cuadricula fija */
+}
+
+.header_center{
+  max-width: 1140px; /*Marcamos el ancho de 1140px*/
+  margin:0 auto; /*Centramos contenido horizontalmente utilizando el margen*/    
+  padding-top: 15px; /*Añadimos espacio interno superior de 15px*/  
+}
+
+.logo_web{
+  float: left; /*Posicionamos a la izquierda*/
+  width: 30%; /*Marcamos el ancho con 30%*/
+  height: 40px; /*Marcamos el alto con 40px*/
+}
+
+header nav{
+  float: right;  /*Posicionamos a la derecha*/
+}
+
+
+/*Logo y Titulo*/
+.logo{
+ float: left; /*Posicionamos a la izquierda*/
+ display:flex; /*Aplicamos metodo "flex" a los hijos directos del contenedor*/ 
+}
+.img_logo {
+  width: 40px;/*Añadimos el ancho 100px*/
+  height: 40px;/*Añadimos el alto 100px*/  
+  display: inline-block; /*Aplicamos metodo "inline-block" al contenedor */ 
+}
+
+img {
+  height: 100%;/*Añadimos el alto máximo de la imagen*/
+  width: 100%;/*Añadimos el ancho máximo de la imagen*/
+  object-fit: cover;/*La imagen llena el contenedor*/
+}
+ 
+figure{
+  margin:0px;/*Quitamos el margen*/
+}
+
+
+
+.logo h1{
+  display: inline-block; /*Aplicamos metodo "inline-block" al contenedor */
+  margin: 0 0 0 15px; /*Quitamos margenes superior/derecha/izquierda y añadimos "15px" izquierda*/
+  font-family: 'Orbitron', sans-serif;/*Añadimos la tipografía de la letra*/
+  font-size: 1.6em; /*Añadimos tamaño de la letra de 1.6em*/
+  color: #647d03; /*Aplicamos color al texto #647d03 */
+}
+
+/*Menu*/
+
+nav ul{
+  list-style: none;  /*Quitamos estilo de lista a los enlaces*/
+  display: flex;/*Aplicamos método "flex" a los hijos directos del contenedor*/ 
+  flex: auto; /*Aplicamos tamaño automático a los hijos directos del contenedor*/
+}
+
+
+nav ul li {
+  padding: 3px;/*Añadimos espacio entre los ítems, al colorear el borde no toca la cuadricula de la página actual*/
+  font-size: 16px;/*El tamaño de letra del encabezado*/ 
+  font-weight: bolder;/*Añadimos texto en negrita*/  
+}
+
+
+.logo a{
+  padding: 0; /*Qitamos espacio interno*/
+}
+
+header a{
+  color: #647d03;/*Aplicamos color al texto #647d03 */
+  text-decoration: none;/*quitamos la decoración*/
+  padding: 15px 45px;/*Añadimos espacio entre los enlaces superior/inferior "15px" izquierda/derecha "45px" */
+}
+
+
+header nav a:hover {
+  border:3px solid #647d03;/*Añadimos borde superior*/
+}
+
+header nav a[href="#"]  {
+  color:#FFFFFF;/*Aplicamos color al texto #FFFFFF */
+  background-color:  #647d03;/*Añadimos borde superior*/
+}
+
+
+
+
+
+
+/*----------------------*/
+/*Main*
+/*----------------------*/
+
+/*Banner - index.html*/
+
+
+#banner_index{
+
+  min-width: 100%; /*Marcamos el ancho minimo con 100%*/
+  background-color: #1C1A1AC0;/*Coloreamos la cuadricula*/
+  background-image:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url(../images/cabecera_inicio.jpg);/*Añadimos imagen fondo*/ 
+  
+  background-repeat: no-repeat;/*Asignamos no repetirse*/
+  background-size:cover;/*Dimensionamos la imagen al espacio total*/
+  background-position: center 15%;/*Posicionamos del fondo*/  
+
+  display: flex; /*Aplicamos metodo "flex" a los hijos directos del contenedor*/ 
+  align-items: center;/*Centramos los items*/
+  padding-top: 150px; /*Añadimos espacio interno superior de 150px*/ 
+  padding-bottom: 200px;/*Añadimos espacio interno inferior de 200px*/
+}
+
+.banner_texto{
+ text-align: center;/*Centramos el texto de forma horizontal*/
+}
+
+main > section:first-child h2{
+  font-family: 'Orbitron', sans-serif;/*Añadimos la tipografía de la letra*/
+  font-size: 36px;  /*Añadimos tamaño de la letra de 36px*/
+  color: #FFFFFF; /*Aplicamos color al texto #FFFFFF */
+}
+
+main > section:first-child  p{
+  font-size: 1em; /*Añadimos tamaño de la letra de 1em*/
+  color: #a1c905;  /*Aplicamos color al texto #a1c905 */
+  margin: 0; /*Quitamos el margen*/
+}
+
+
+
+
+
+/* Meet our staff*/
+
+.meet{ 
+  text-align: center; /*Centramos el texto de forma horizontal*/
+  padding-top: 72px; /*Añadimos espacio interno superior de 72px*/ 
+}
+
+.meet h2{
+  font-size: 2em; /*Añadimos tamaño de la letra de 2em*/
+  padding-bottom: 10px; /*Añadimos espacio interno inferior de 10px*/ 
+}
+
+.meet_staff{
+  display: flex;/*Aplicamos método "flex" a los hijos directos del contenedor*/ 
+  flex: 1 100px;/*Creamos columna de 100px*/
+  align-items: center;/*Alineamos el texto centrado Horizontalmente*/
+  justify-content: center;/*Alineamos el texto centrado verticalmente*/  
+  padding: 45px 8px 70px 8px; /*Añadimos espacio interno superior "45px" dercha "8px" inferior "70px" izquierda "8px"*/
+}
+.meet_people{
+  display: flex; /*Aplicamos método "flex" a los hijos directos del contenedor*/ 
+  flex-wrap: wrap;/*colocamos los hijos en diferentes líneas*/
+  align-items: center;/*Alineamos el texto centrado Horizontalmente*/
+  flex: 1 100px;/*Creamos columna de 100px*/
+  flex-direction:column ;/*Colocamos los ítems en columnas*/
+ }
+
+ .img_meet{
+  width: 100%;/*Añadimos el ancho 200px*/
+  height: 100%; /*Añadimos el alto 200px*/
+  align-items: center;/*Alineamos el texto centrado Horizontalmente*/
+  justify-content: center;/*Alineamos el texto centrado verticalmente*/  
+}
+
+.meet_people figure{
+  width: 100%; /*Marcamos el ancho con 100%*/
+  height: 100%; /*Marcamos el alto con 100%*/
+}
+
+.meet_foto{
+  position: relative;/*Marcamos el contenedor con una posicion relativa*/
+  width: 300px; /*Marcamos el ancho de 300px*/
+  height: 275px; /*Marcamos el alto con 275px*/
+}
+
+.meet_job{
+  background-color: #FFFFFF;/*Añadimos color del fondo*/
+  color: #0c0c0d;  /*Aplicamos color al texto #0c0c0d */
+  width: 60%; /*Marcamos el ancho de 60%*/
+  position: absolute;/*Marcamos el contenedor con una posición absoluta*/
+  bottom: 0;/*Marcamos la posición inferior 0*/
+  right: 0;/*Marcamos la posición derecha 0*/
+}
+
+.meet p{
+  opacity: 90%;/*aclaramos el color*/
+}
+
+.meet_people p{
+  text-align: left; /*Alineamos a la izquierda el texto*/
+  padding-left: 34px;/*Añadimos espacio interno izquierda de 34px*/ 
+  padding-right: 50px;/*Añadimos espacio interno derecha de 50px*/ 
+  margin: 0;/*Quitamos el margen*/
+ }
+
+ .meet_people h3{
+  padding: 10px;/*Aplicamos espacio interno de 10px*/  
+  margin: 0;/*Quitamos el margen*/
+ }
+
+ .teams p:last-child{
+  padding: 32px;/*Modificamos espacio interno*/
+  margin: 0;/*Quitamos margen*/
+ }
+
+
+
+/*customers*/
+
+.customers{
+  background-color: #f1f4f5; /*Añadimos Color de fondo*/
+  padding-top: 90px;/*Añadimos espacio inerno  superior 90px*/
+  padding-bottom: 100px;/*Añadimos espacio interno inferior de 100px*/
+}
+
+
+.customers h3{
+  color: #0c0c0d; /*Aplicamos color al texto #0c0c0d*/
+  font-size: medium;/*Añadimos tamaño de la letra de medium*/
+}
+
+.customers blockquote p:first-child{
+  margin: 0;/*Quitamos margen*/
+  margin-bottom: 7px;/**/
+  display: inline;/*Aplicamos metodo inline al contenedor*/
+  font-style: italic;  /*Marcamos el texto en cursiva*/
+  float: right; /*Posicionamos a la derecha*/
+}
+
+.author{
+  font-weight: bold;/*Marcamos texto en negrita*/
+  text-align: right; /*Alineamos a la derecha el texto*/
+  display: block;/*Aplicamos método block al contenedor*/
+}
+
+blockquote{
+  background-color: #EDEDED;/*Aplicamos color de fondo*/
+  border-left: 10px solid	#647d03;/*Añadimos borde derecha del contenedor*/
+  color: #5a7001; /*Aplicamos color al texto #5a7001*/
+  margin: 50px 100px 20px 120px;/*Aplicamos margen superior 50px, derecha 100px, inferior 20px, izquierda 120px*/
+  padding: 20px 30px 20px 10px; /*Añadimos espacio interno superior "20px" dercha "30px" inferior "20px" izquierda "10px"*/
+  font-size: 0.9em;/*Añadimos tamaño de la letra de 0.9em*/
+  font-weight: 400;/*Aplicamos negrita al texto */
+}
+
+
+blockquote .quote:before{
+  content: open-quote;/*Aplicamos contenido parentesis*/
+  quotes: '“' '”';/*Especificamos los parentesis*/
+  font-family: Arial, Helvetica, sans-serif;/*Añadimos la tipografía de la letra*/
+  font-size: 60px;/*Añadimos tamaño de la letra de 60px*/
+  margin-bottom: 25px;/*Aplicamos margen inferior de 25px*/
+  
+  margin-right:10px;/*Aplicamos margen derecha de 25px*/
+  float: left; /*Posicionamos a la izquierda*/
+}
+
+
+
+
+
+/*post*/
+
+.post{
+  background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(../images/fondo_inicio.jpg);/*Añadimos la imagen de fondo y un gradiente para oscurecerla*/
+
+  background-repeat: no-repeat;/*Asignamos no repetirse*/
+  background-position: center 85%;/*Posicionamos del fondo*/
+  background-size: 180%;/*Añadimos el tamaño de la imagen*/
+
+  max-width: 100%; /*Marcamos el ancho maximo de 100%*/
+
+  text-align: center; /*Centramos el texto de forma horizontal*/
+  padding-top: 68px; /*Añadimos espacio interno superior de 68px*/ 
+}
+
+.post h2{
+  color: #FFFFFF; /*Aplicamos color al texto #FFFFFF */
+  font-size: 2em; /*Añadimos tamaño de la letra de 2em*/
+  padding-bottom: 10px; /*Añadimos espacio interno inferior de 10px*/
+}
+
+.post div p:first-child{
+  background-color: rgba(255,255,255,0.5); /*Añadimos color de fondo con 50% transparente*/
+  padding: 15px;/*Aplicamos espacio  interno de 15px*/
+}
+
+
+.post_articles{
+  display: grid;/*Aplicamos método "grid"*/ 
+  grid-template-columns: 1fr 1fr 1fr;/*Creamos 3 columnas de 1fr para el contenido*/
+  padding: 25px 0 85px 10px; /*Añadimos espacio interno superior "25px" dercha "0" inferior "85px" izquierda "10px"*/
+}
+
+.post_articles img{
+  border-radius: 50%;
+  width: 75px;  /*Marcamos el ancho de 75px*/
+  height: 75px; /*Marcamos el alto con 75px*/
+  border: 3px solid #FFFFFF;/*Añadimos borde al contenedor*/
+}
+
+.post_articles p{
+    margin: 0;/*Quitamos margen*/
+}
+
+.post_articles a{
+  color: #a1c905;  /*Aplicamos color al texto #a1c905*/
+  font-size: 1em; /*Añadimos tamaño de la letra de 1em*/
+  text-decoration: none;/*quitamos la decoración*/
+  padding-top: 10px; /*Añadimos espacio interno superior de 10px*/ 
+}
+
+.post_articles a:hover{
+  color: #FFFFFF; /*Aplicamos color al texto #FFFFFF */
+}
+.post_articles time{
+  color: #FFFFFF; /*Aplicamos color al texto #FFFFFF */
+  font-size: medium; /*Añadimos tamaño de la letra de medium*/
+} 
+
+.post_articles .post_ind{
+  display: grid;/*Aplicamos método "grid"*/ 
+  grid-template-columns: 100px 210px ;/*Indicamos tamaño de columnas*/
+  grid-template-rows: 63px 35px;/*Indicamos tamaño de filas*/
+  text-align: left; /*Alineamos a la izquierda el texto */
+  justify-content: center;/*Alineamos el texto centrado verticalmente*/  
+}
+
+.post_articles figure{
+  grid-row: 1/3;/*Marcamos el espacio que ocupa ente filas*/
+  padding-top: 10px; /*Añadimos espacio interno superior de 10px*/ 
+}
+
+.post_articles .post_ind:nth-child(2) a{
+  padding-top: 0; /*Quitamos espacio interno superior*/
+}
+
+.post_articles .post_ind:nth-child(2) p{
+  padding-top: 10px; /*Añadimos espacio interno superior de 10px*/ 
+}
+
+
+
+/*----------------------*/
+/*Pie de Página*/
+/*----------------------*/
+ footer{
+  background-color:#698303;   /*Añadimos color de fondo*/
+  width: 100%;/*Marcamos el ancho de 100%*/
+  height: 200px;/*Marcamos el tamaño de largo de 200px*/
+  margin: 0 auto;/*Centramos el contenido*/
+  text-align: center; /*Centramos el texto de forma horizontal*/
+  font-weight: bold;/*Marcar textos en negrita*/
+ }
+
+
+ footer nav{  
+   padding-top: 80px; /*Añadimos espacio interno superior de 80px*/ 
+   padding-bottom: 0px; /*Quitamos espacio interno inferior*/
+   margin-bottom: 0px; /*Añadimos margen inferior de 200px*/
+ }
+
+ footer nav ul{  
+  padding-bottom:0px ; /*Quitamos espacio interno inferior*/
+  margin-bottom: 0px; /*Quitamos margen inferior*/
+  display: inline; /*Aplicamos método "inline" al contenedor */
+}
+
+footer nav ul li{  
+  padding: 5px 30px 0 30px; /*Añadimos espacio interno superior "5px" derecha "30px" inferior "0" izquierda "30px"*/
+  display: inline-block; /*Aplicamos método "inline-block" al contenedor */
+}
+
+
+ footer p{
+   padding: 0; /*Quitamos espacio interno*/
+   color: rgba(255,255,255,0.5);/*Coloreamos el texto*//*Cambiamos el color para mejorar el contraste */
+  }
+
+
+  footer a{
+    color: #000000; /*Aplicamos color al texto #000000 */
+    text-decoration: none;/*Quitamos la decoración*/
+    font-weight: normal;/*Quitamos la negrita del texto */
+  }
+  
+  footer a:hover{
+    color: rgba(255,255,255,0.5);/*Coloreamos el texto*//*Cambiamos el color para mejorar el contraste */
+    border-bottom: 1px solid rgba(255,255,255,0.5);/*Añadimos borde inferior*//*Cambiamos el color para mejorar el contraste */ 
+  }
+  
+
+/*--------------------------------------------*/
+/*-----prices.html----------------------------*/
+/*-----contact.html---------------------------*/
+/*--------------------------------------------*/
+
+/*Banner*/
+main> section:first-child{
+  background-image:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url(../images/cabecera_interna.jpg);/*Añadimos imagen fondo*/   
+  background-repeat: no-repeat;/*Asignamos no repetirse*/
+  display: block; /*Aplicamos método "block" al contenedor */
+}
+
+
+.banner_prices , .banner_contact{
+  min-width: 100%; /*Marcamos el ancho de 100%*/
+  background-size:168%;/*Dimensionamos la imagen al espacio total*/
+  background-position: right 15%;/*Posicionamos del fondo*/  
+  padding-top: 90px; /*Añadimos espacio interno superior de 90px*/ 
+  padding-bottom: 70px; /*Añadimos espacio interno inferior de 70px*/
+} 
+ 
+.banner_text_prices, .banner_text_contact{  
+  max-width: 1140px; /*Marcamos el ancho máximo  de 1140px*/
+  margin:0 auto; /*Centramos el contenido*/  
+  text-align: left; /*Alineamos a la izquierda el texto*/
+  font-size: 2.5em; /*Añadimos tamaño de la letra de 2.5em*/
+}
+
+
+
+
+
+
+
+
+
+/*Prices Services / Contact*/
+.center{
+  display: grid;/*Aplicamos método "grid"*/ 
+  grid-template-columns: 3fr 1fr;/*Creamos 2 columnas de 3fr y 1fr*/
+}
+
+main .center  h2{
+  font-size: 2.2em; /*Añadimos tamaño de la letra de 2.2em*/
+  color: #000000;  /*Aplicamos color al texto #000000*/
+  padding-bottom: 10px; /*Añadimos espacio interno inferior de 10px*/
+}
+
+main .center article h3{
+  font-style: italic;
+  font-size: 2em; /*Añadimos tamaño de la letra de 2em*/
+  text-align: center; /*Centramos el texto de forma horizontal*/
+  margin-bottom: 30px; /*Aplicamos margen inferior 30px*/
+}
+
+main .center .services .container > p{
+  font-size: 1em; /*Añadimos tamaño de la letra de 1em*/
+  padding-right:35px; /*Añadimos espacio interno derecha de 10px*/
+  line-height: 1.5; /*Aplicamos interlineado de 1.5*/
+  opacity: 65%; /*aclaramos el color*/
+} 
+
+main .center .services {
+  padding: 40px 25px 60px 0;  /*Añadimos espacio interno superior "40px" dercha "25px" inferior "60px" izquierda "0"*/
+} 
+
+
+
+
+
+
+
+
+
+/*aside*/
+
+aside {
+padding-left: 30px; /*Añadimos espacio interno izquierda de 65px*/
+padding-bottom: 65px; /*Añadimos espacio interno inferior de 65px*/
+}
+
+aside .post_articles{
+  grid-template-columns: 1fr; /*creamos columna de 1fr*/
+  padding: 0;  /*Quitamos espacio interno*/
+}
+
+aside .post_articles img{
+  border-radius: 0;/*Quitamos el borde redondeado*/
+}
+
+aside .post_articles a{
+  color: #647d03; /*Aplicamos color al texto #647d03 */
+  font-size: 1em; /*Añadimos tamaño de la letra de 1em*/
+  text-decoration: none;/*quitamos la decoración*/
+  padding-top: 10px; /*Añadimos espacio interno superior de 10px*/ 
+}
+
+aside .post_articles a:hover{
+  color: #000000; /*Aplicamos color al texto #647d03 */
+  border-bottom: 1px solid #000000;/*Añadimos borde*/  
+}
+aside .post_articles time{
+  color: #000000; /*Aplicamos color al texto #647d03 */
+  font-size: medium; /*Añadimos tamaño de la letra de medium*/
+}
+
+aside .post_articles .post_ind{
+  padding: 15px; /*Añadimos espacio interno de 15px*/
+}
+
+aside .post_articles .post_ind:nth-child(1n+2){
+  border-top:  1px solid #647d03 ;  /*Añadimos borde superior*/ 
+}
+
+
+
+
+
+/*  social media  */
+
+aside section h3{
+  letter-spacing: 0.6px;/*Aplicamos espacio entre las letras*/
+  margin-bottom: 10px; /*Añadimos espacio interno inferior de 10px*/
+  font-size: 0.9em; /*Añadimos tamaño de la letra de 0.9em*/
+}
+aside section h4{
+  font-size: 0.7em; /*Añadimos tamaño de la letra de 0.7em*/
+}
+
+.social_media{
+  display: flex; /*Aplicamos metodo "flex" a los hijos directos del contenedor*/ 
+  align-items: center;/*centramos el contenido horizontalmente*/
+  justify-items: center;/*centramos el contenido verticalmente*/
+}
+
+.social_media ul{
+  padding: 0; /*Quitamos espacio interno*/
+}
+
+.social_media ul li{
+  display: inline-block; /*Aplicamos método  "inline-block" al contenedor */
+  margin:5px; /*Aplicamos margen de px*/
+  width: 70px; /*Marcamos el ancho de 70px*/
+  height: 80px; /*Marcamos el alto con 80px*/
+  text-align: center; /*Centramos el texto de forma horizontal*/
+}
+
+.social_media ul li a{
+  display: block; /*Aplicamos método block al contenedor*/
+  padding: 0 10px;/*Aplicamos espacio interno izquierda/derecha de 10px*/ 
+  color: #FFFFFF;  /*Aplicamos color al texto #647d03 */
+  line-height: 70px; /*Aplicamos interlineado de 70px*/
+  font-size: 30px; /*Añadimos tamaño de la letra de 30px*/
+  border-radius: 50%; /*Aplicamos borde redondo al contenedor*/
+}
+
+.social_media ul li:nth-child(1) a{
+  background-color: #3b5998;  /*Aplicamos color fondo*/
+}
+
+.social_media ul li:nth-child(2) a{
+  background-color:  #55ACEE;/*Aplicamos color fondo*/
+}
+.social_media ul li:nth-child(3) a{
+  background-color:  #007bb5;/*Aplicamos color fondo*/
+}
+.social_media ul li:nth-child(4) a{
+  background-color:  #bb0000;/*Aplicamos color fondo*/
+}
+.social_media ul li:nth-child(5) a{
+  background-color:  #125688;/*Aplicamos color fondo*/
+}
+.social_media ul li:nth-child(6) a{
+  background-color:  #ff6600;/*Aplicamos color fondo*/
+}
+
+.social_media ul li a:hover{
+  color: #000000; /*Aplicamos color al texto  #000000 */
+  opacity: 70%; /*aclaramos el color*/
+}
+
+.social_media ul li a i:hover{
+  border-bottom: 3px solid #000000;/*Aplicamos borde inferior*/
+}
+
+
+
+
+
+
+
+/*Special Offer*/
+
+.special_offer{
+  border: 1px dashed #647d03 ;/*Añadimos borde al contenedor*/
+  padding: 10px 15px;/*Aplicamos espacio interior de 10px superior/inferior y 15px izquierda/derecha*/
+}
+
+.special_offer h4{
+  padding: 0; /*Quitamos espacio interno*/
+}
+
+.special_offer p{
+  line-height: 1.5; /*Aplicamos interlineado de 1.5*/
+  opacity: 80%; /*aclaramos el color*/
+  padding:  10px 0; /*Aplicamos espacio interior de 10px superior/inferior y 0 izquierda/derecha*/  
+  margin-top: 0; /*Quitamos margen superior*/
+}
+
+
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*-----Price.html-----*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+
+
+/*Tabla Price.html*/
+
+table {
+  border-collapse: collapse;
+  text-align: center; /*Centramos el texto de forma horizontal*/
+  font-size: 0.8rem; /*Añadimos tamaño de la letra de 0.8em*/
+  table-layout: fixed;/*asignar tamaño en relacion al ancho de las celdas de encabezado*/
+  width: 100%; /*Marcamos el ancho de 100%*/
+}
+
+caption { 
+  padding: 10px; /*Aplicamos espacio interior de 10px*/
+  caption-side: bottom;/*Posicionamos el contenedor en la parte inferior de la tabla*/
+  letter-spacing: 0.4px;/*Añadimos espacio entre letras*/
+  font-size: 1.2em; /*Añadimos tamaño de la letra de 1.2em*/
+  border: 1px solid #000000;/*Añadimos borde al contenedor*/
+}
+
+thead tr{
+  background-color: #698303; /*Aplicamos color al fondo #698303 */
+  font-size: 15px; /*Añadimos tamaño de la letra de 15px*/
+  font-weight: bold;/*Aplicamos texto en negrita*/
+}
+
+
+thead th:nth-child(1), thead th:nth-child(2){
+    width: 14%;/*Asignamos tamaño de la celda y de la columna de 14%*/
+}
+
+tbody th{
+  background-color: #a1c905; /*Aplicamos color al fondo #a1c905 */
+  font-size: 16px; /*Añadimos tamaño de la letra de 16px*/
+  font-weight: bold; /*Aplicamos texto en negrita*/
+  text-align: left; /*Alineamos a la izquierda el texto */
+}
+
+tbody tr{
+  font-size: 1.3em; /*Añadimos tamaño de la letra de 1.3em*/
+  border: 5px; /*aplicamos borde de 5px*/
+}
+
+
+
+th[id="Design"] , th[id="Marketing"]  {
+  background-color: #85a701; /*Aplicamos color al texto #85a701 */
+  font-size: 22px; /*Añadimos tamaño de la letra de 22px*/
+  font-weight: bold; /*Aplicamos texto en negrita*/
+}
+
+td {
+  border: 1px solid #000000; /*Añadimos borde al contenedor*/
+  padding: 10px 20px; /*Aplicamos espacio interior de 10px superior/inferior y 20px izquierda/derecha*/ 
+}
+
+th {
+  border-bottom: 1px solid #000000; /*Añadimos borde inferior al contenedor*/
+  padding: 10px 20px;  /*Aplicamos espacio interior de 10px superior/inferior y 20px izquierda/derecha*/ 
+}
+
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /*Aplicamos color al texto #f2f2f2 */
+}
+
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*-----contact.html-----*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+
+
+/* contact us */
+
+
+.contact_us{
+  border-bottom: 1px solid #647d03;/*Añadimos borde inferior al contenedor*/
+  padding-bottom: 10px; /*Añadimos espacio interno inferior de 10px*/
+}
+
+address{
+  opacity: 65%; /*aclaramos el color*/
+  line-height: 2.5; /*Aplicamos interlineado de 2.5*/
+  width: 40%; /*Marcamos el ancho de 40%*/
+  padding-left: 20px; /*Añadimos espacio interno izquierda de 20px*/
+}
+
+address a{
+  color:#000000; /*Aplicamos color al texto #000000 */
+  text-decoration: none;/*Quitamos la decoración  del enlace*/
+}
+
+main .center .contact_us h3{
+  font-size: 0.9em; /*Añadimos tamaño de la letra de 0.9em*/
+  text-align: left; /*Alineamos a la izquierda  el texto*/
+  font-style: normal; /*Quitamos la negrita del texto*/
+  margin-bottom: 0; /*Quitamos el margen inferior*/
+}
+
+/*Formulario*/
+
+.form{
+  padding-top: 30px; /*Añadimos espacio interno superior de 30px*/ 
+}
+fieldset{
+  border-color:  #647d03;/*Aplicamos color al borde*/
+}
+
+fieldset > legend{ /*Aplicamos estilos a los hijos directos */
+  font-weight: bold;/*Marcamos el texto en negrita*/
+  font-size: 1.2em; /*Añadimos tamaño de la letra de 1.2em*/
+  padding: 10px; /*Añadimos espacio interno de 10px*/
+}
+
+form ul li{
+  list-style-type: none; /*Quitamos el estilo a la lista*/
+  padding: 5px; /*Añadimos espacio interno de 5px*/
+  font-weight: normal; /*Quitamos el texto en negrita*/
+  font-size: 0.9em; /*Añadimos tamaño de la letra de 0.9em*/
+}
+
+button{
+  background-color: #698303; /*Aplicamos color al texto #698303*/
+  width: 100%;  /*Marcamos el ancho de 100%*/
+  height: 65px; /*Marcamos el alto con 65px*/
+  font-size: 1.3em; /*Añadimos tamaño de la letra de 1.3em*/
+  margin-top: 10px; /*Añadimos margen superior de 10px*/
+}
+
+button:hover{  
+  background-color: #aaaaaa; /*Añadimos color de fondo*/
+}
+
+input,textarea {
+  background-color: #f1f4f5 ; /*Añadimos color de fondo*/
+  border: 1px solid #647d03; /*Añadimos borde al contenedor*/
+  margin-left:  25px; /*Añadimos margen izquierda de 25px*/
+  box-shadow: 0 0 5px 1px #647d03;/*Añadimos efecto de sombra*/
+}
+
+label{
+  display: block;/*Añadimos Los titulos en bloque posicionando los imputs debajo*/
+}
+
+textarea{
+  width: 80%; /*Marcamos el ancho de 80%*/
+  height: 150px; /*Marcamos el alto con 150px*/
+  margin-top: 10px; /*Añadimos margen superior de 10px*/
+}
+
+
+
+main .center .services form p{
+  padding: 0; /*Quitamos espacio interno*/
+}
+
+nav input{
+  display:none; /*Quitamos la visualización  del contenedor*/
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+  nav label{
+    display:none; /*Quitamos la visualización  del contenedor*/
+  }
+
+  table  .table_poduct{
+    display: none; /*Quitamos la visualización  del contenedor*/
+  }
+  table .table_price{
+    display: none; /*Quitamos la visualización  del contenedor*/
+  }
+} 
+
+@media screen and (max-width: 768px) {
+
+  /*Cabezera General*/
+  /*Contenedor Logotipo*/
+  header,.top_fixed{
+    padding-bottom: 20px; /*Añadimos espacio interno inferior de 20px*/
+  }
+  .logo_web{
+    float: none;/*Quitamos el posicionamos*/
+    width: 100%; /*Marcamos el ancho de 100%*/
+    padding-bottom: 20px; /*Añadimos espacio interno inferior de 20px*/
+  }
+  .logo h1{
+    font-size: 1.4em; /*Añadimos tamaño de la letra de 1.4em*/  
+  }
+
+  /*Contendor Menu*/
+  header nav{
+    float: none;/*Quitamos el posicionamos */
+    width: 100%;  /*Marcamos el ancho de 100%*/
+  }
+
+  
+  nav label{
+    border-top: 3px solid black; /*Añadimos borde al contenedor*/
+    background-color: transparent; /*Añadimos color de fondo transparente*/
+    height: 7px; /*Marcamos el alto con 7px*/
+    width: 48px; /*Marcamos el ancho de 48px*/
+    margin-right: 10px; /*Añadimos margen derecha de 10px*/
+   }
+
+   .menu1{
+    position: absolute; /*Marcamos el contenedor con una posición absoluta*/
+    top: 50px; /*Marcamos la posición superior de 50px*/
+    right: 10px; /*Marcamos la posición derecha de 10px*/
+    width:30px;   /*Marcamos el ancho de 30px*/
+   }
+
+   .menu2{
+    position: absolute; /*Marcamos el contenedor con una posición absoluta*/
+    top: 60px; /*Marcamos la posición superior de 60px*/
+    right: 10px; /*Marcamos la posición derecha de 10px*/
+    width:30px;  /*Marcamos el ancho de 30px*/
+   } 
+   
+   .menu3{
+    position: absolute; /*Marcamos el contenedor con una posición absoluta*/
+    top: 70px; /*Marcamos la posición superior de 70px*/
+    right: 10px; /*Marcamos la posición derecha de 10px*/
+    width:30px;  /*Marcamos el ancho de 30px*/
+   }
+ 
+   nav input:checked ~ .menu1{    
+     transform: translateY(13px) translateX(-4px) rotate(135deg); /*Aplicamos rotacion de la linea para transformarla en la cruz*/
+   }
+   
+   nav input:checked ~ .menu2{    
+      transform: scale(0); /*Quitamos la linea*/
+   }
+   
+   nav input:checked ~ .menu3{    
+     transform: translateY(-7px) rotate(-135deg); /*Aplicamos rotacion de la linea para transformarla en la cruz*/
+   }
+
+
+
+
+  /*Lista del menu*/
+  nav ul{
+    display:none;/*Quitamos la visualización  del contenedor*/ 
+  }
+  nav input:checked  ~ ul{  
+   display:block; /*Aplicamos método block al contenedor*/
+   text-align: center; /*Centramos el texto de forma horizontal*/
+   margin: 0;/*Quitamos el margen*/
+   padding: 0; /*Quitamos espacio interno*/
+   padding-top: 20px; /*Añadimos espacio interno superior de 20px*/ 
+  } 
+
+  nav input:checked  ~ ul li{  
+    display: block; /*Aplicamos método block al contenedor*/
+    width: 100%; /*Marcamos el ancho de 100%*/
+    margin: 0;/*Quitamos el margen*/
+    padding: 0; /*Quitamos espacio interno*/
+   } 
+
+  header a{
+    display: block; /*Aplicamos método block  al contenedor*/
+  }
+
+
+
+
+
+/*----------*/  
+/*Index.html*/
+/*----------*/
+
+/*Banner*/
+#banner_index{
+  background-position: 70% 50%;/*Marcamos la posición de la imagen de fondo*/
+  background-size: 1800px;/*Aplicamos el tamaño al fondo del contenedor*/
+  min-height: 100%; /*Marcamos el alto mínimo del 100%*/
+}
+
+
+/*Meet our Staff*/
+  .meet_staff{
+    flex-wrap: wrap;/*Colocamos a los elementos flex en diferentes lineas*/
+  }
+
+  .meet_people{
+    padding-bottom: 120px; /*Añadimos espacio interno inferior de 120px*/
+  }
+
+  /*Customers*/
+  .customers h3{
+    padding-left: 10px; /*Añadimos espacio interno izquierda de 10px*/
+  }
+
+  blockquote{
+    margin: 29px;/*Añadimos margen de 29px*/
+  }
+  
+  blockquote span{
+    padding-left: 30px; /*Añadimos espacio interno izquierda de 30px*/
+  }
+
+  blockquote .quote::before {
+    margin-bottom: 45px;/*Añadimos margen inferior de 45px*/
+  }
+
+/*Post*/
+  .post{
+    padding-top: 67px; /*Añadimos espacio interno superior de 67px*/ 
+    background-repeat: repeat-y;/*Aplicamos repeticion de la imagen por el eje Y*/
+    background-size: 2500px;/*Marcamos el tamaño de la imagen de 2500px*/
+    background-position: 50% 450%;/*Asignamos la posicion de la imagen */
+  }
+  
+  .post div p:first-child{
+    margin: 20px;/*Añadimos margen de 20px*/
+  }
+  .post_articles{
+    grid-template-columns: 1fr;/*Creamos una columna de 1fr para los elementos del contenedor*/
+  }
+
+  .post_ind{
+    margin-bottom: 30px;/*Añadimos margen inferior  de 30px*/
+  }
+
+
+/*----------*/  
+/*price.html*/
+/*contact.html*/
+/*----------*/  
+
+/*Banner*/
+
+  .banner_prices, .banner_contact {
+    background-size: 700%;/*Marcamos el tamaño del fondo de 700%*/
+  }
+
+  main > section:first-child h2 {
+    padding-left: 15px; /*Añadimos espacio interno izquierda de 15px*/
+  }
+
+/*Aside*/  
+  aside{
+    padding-left: 0; /*Quitamos el espacio interior izquierda*/
+  }
+
+  .special_offer{
+    width: auto; /*Marcamos el ancho automatico*/
+  }
+
+/*----------*/  
+/*price.html*/
+/*----------*/ 
+
+  .center{
+    grid-template-columns: 1fr;/*Creamos una columna de 1fr para los elementos del contenedor*/
+  }
+  .container{
+    padding:10px; /*Añadimos espacio interno superior "10px"*/
+  }
+
+  main .center .services p{
+    padding-right: 0;  /*Quitamos espacio interno derecha*/
+  } 
+
+  main .center article h3{
+    font-size: 1.9em; /*Añadimos tamaño de la letra de 1.9em*/
+  }
+
+  /*Tabla*/
+  tbody{
+    display: grid;/*Aplicamos método "grid"*/ 
+    grid-template-columns: 1fr; /*Creamos una columna de 1fr para los elementos del contenedor*/
+  } 
+
+  caption{
+    height: 35px; /*Marcamos el alto con 35px*/
+    padding-top: 30px; /*Añadimos espacio interno superior de 30px*/ 
+  }
+
+  thead tr th{
+    display: none;/*Quitamos la visualización  del contenedor*/ 
+  }
+
+  tbody tr th{ 
+    display: block; /*Aplicamos método block al contenedor*/
+    border-color: transparent; /*Aplicamos color transparente al borde*/
+    text-align: center;/*Centramos el texto de forma horizontal*/
+  }
+  
+  th[id="Design"], th[id="Marketing"]{
+    border-bottom: 10px solid white; /*Añadimos borde inferior al contenedor*/
+    height: 30px; /*Marcamos el alto con 30px*/
+  }
+
+  tbody tr{   
+    margin-bottom: 40px; /*Añadimos margen inferior  de 40px*/   
+  }
+  
+  tbody tr:nth-child(2n) {
+    background-color: #FFFFFF; /*Añadimos color de fondo*/
+  }
+  
+  tbody tr td{   
+    width: 307px; /*Marcamos el ancho de 307px*/
+    height: 55px; /*Marcamos el alto de 55p`x*/
+  }
+
+  table  .table_poduct{
+    display: inline-block; /*Aplicamos metodo "inline-block" al contenedor */
+    background-color: #698303; /*Añadimos color de fondo*/
+    width: 95px; /*Marcamos el ancho de 95px*/
+    position: relative;/*Marcamos el contenedor con una posicion relativa*/
+    top: -28%; /*Marcamos la posición superior de -28%*/
+    left: -30%; /*Marcamos la posición izquierda de -30%*/
+    font-size: 0.7em; /*Añadimos tamaño de la letra de 0.7em*/
+    font-weight: bold; /*Marcamos el texto en negrita*/
+    height: 20px; /*Marcamos el alto con 20px*/
+    padding-top: 5px;/*Añadimos espacio interno superior de 5px*/ 
+  }
+
+
+  table .table_price{
+    display: inline-block; /*Aplicamos metodo "inline-block" al contenedor */
+    background-color: #698303; /*Añadimos color de fondo*/
+    width: 95px; /*Marcamos el ancho de 95px*/
+    position: relative; /*Marcamos el contenedor con una posicion relativa*/
+    top: -28%; /*Marcamos la posición superior de -28%*/
+    left: -30%; /*Marcamos la posición izquierda de -30%*/
+    font-size: 0.7em; /*Añadimos tamaño de la letra de 0.7em*/
+    font-weight: bold; /*Marcamos el texto en negrita*/
+    height: 20px; /*Marcamos el alto con 20px*/
+    padding-top: 5px; /*Añadimos espacio interno superior de 5px*/ 
+  }
+  
+  tbody tr:nth-child(5) .table_poduct,tbody tr:nth-child(6) .table_poduct, tbody tr:nth-child(8) .table_poduct, tbody tr:nth-child(10) .table_poduct{
+    top: -27%; /*Marcamos la posición superior de -28%*/
+  }
+
+
+  tbody tr:nth-child(5) .table_price,tbody tr:nth-child(6) .table_price, tbody tr:nth-child(8) .table_price, tbody tr:nth-child(10) .table_price{
+    top: -27%; /*Marcamos la posición superior de -28%*/
+  }
+
+}
