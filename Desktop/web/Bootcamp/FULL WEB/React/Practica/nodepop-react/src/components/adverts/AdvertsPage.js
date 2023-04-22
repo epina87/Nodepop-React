@@ -1,30 +1,42 @@
 import { useEffect, useState } from 'react';
-import './style/AdvertsPage.css'
-import getAdvertsList from './service';
+import './style/AdvertsPage.css';
+import { getAdvertsList } from './service';
+import { logout } from '../auth/service';
 
+function AdvertsPage({ onLogout }) {
+  const [adverts, setAdverts] = useState([]);
 
+  useEffect(() => {
+    getAdvertsList().then(adverts => setAdverts(adverts));
+    console.log(adverts);
+  }, []);
 
-function AdvertsPage(){
-    const[adverts,setAdverts] = useState([]);
+  const handleClick = async () => {
+    await logout();
+    onLogout();
+  };
 
-    useEffect(()=>{
-            getAdvertsList().then(
-                response => setAdverts(response.data)
-                );
-    }, [])
+  return (
+    <div className="Adverts-Page-Container">
+      <button onClick={handleClick}>Logout</button>
+      {!!adverts.length ? (
+        <ul>
+          {adverts.map(advert => (
+            <li key={advert.id}>
+              {advert.name}
 
-    return(
-        <div
-            className="Adverts-Page-Container"
-        >
-            <ul>
-            {adverts.map(advert=><li key={advert.id}> {advert.text} </li>)}
-            </ul>
+              {advert.price}
+              <p>{advert.sale}</p>
 
-        </div>
-
-    );
-
+              {advert.tags}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Be the first one!</p>
+      )}
+    </div>
+  );
 }
 
 export default AdvertsPage;
