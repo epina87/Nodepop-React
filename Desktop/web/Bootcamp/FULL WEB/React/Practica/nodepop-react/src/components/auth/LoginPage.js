@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import { login } from './service';
 import './style/LoginPage.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function LoginPage({ onLogin }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [credential, setCredentials] = useState({
     email: '',
     password: '',
   });
 
-  const [saveSession, setSaveSession] = useState('false');
+  const [saveSession, setSaveSession] = useState(false);
 
   const handlechecked = event => {
     setSaveSession(event.target.checked);
@@ -17,20 +23,30 @@ function LoginPage({ onLogin }) {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    await login(credential,saveSession);
+    setIsLoading(true);
+    try {
+      const response = await login(credential, saveSession);
+      setIsLoading(false);
+    } catch (error) {
+        console.log(error)
+      setIsLoading(false);
+      setError(error);
+      return;
+    }
+
     onLogin(true);
+
+    const to = location.state?.from?.pathname || '/';
+
+    navigate(to);
   };
 
   const handleChange = event => {
     setCredentials({ ...credential, [event.target.name]: event.target.value });
   };
 
-  const buttonDisabled = !credential.email || !credential.password;
+  const buttonDisabled = isLoading || !credential.email || !credential.password;
   const btnClass = !buttonDisabled ? 'btn' : 'btnDisabled';
-
-
-
-  
 
   return (
     <div className="global-container">
@@ -72,9 +88,10 @@ function LoginPage({ onLogin }) {
               </button>
 
               <p>
-                <input type="checkbox" onChange={handlechecked}  /> you want to
+                <input type="checkbox" onChange={handlechecked} /> you want to
                 save the session
               </p>
+              {error && <div> {error.message} </div>}
             </form>
           </div>
         </div>
