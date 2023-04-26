@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import './style/AdvertsPage.css';
 import { getAdvertsList } from './service';
-import { logout } from '../auth/service';
+//import { logout } from '../auth/service';
 import Layout from '../layout/Layout';
 import { Link, NavLink } from 'react-router-dom';
 
-function AdvertsPage(props) {
+function AdvertsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [adverts, setAdverts] = useState([]);
 
@@ -19,7 +19,7 @@ function AdvertsPage(props) {
   }, []);
 
   return (
-    <Layout title="Adverts Page" {...props}>
+    <Layout title="Adverts Page" >
       {isLoading ? (
         <div> Loading ...</div>
       ) : (

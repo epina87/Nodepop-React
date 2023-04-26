@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { login } from './service';
 import './style/LoginPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from './context';
 
-function LoginPage({ onLogin }) {
+function LoginPage() {
+  const { onLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [credential, setCredentials] = useState({
     email: '',
     password: '',
   });
+
+  const resetError = () => {
+    setError(null);
+  };
 
   const [saveSession, setSaveSession] = useState(false);
 
@@ -23,12 +29,14 @@ function LoginPage({ onLogin }) {
   const handleSubmit = async event => {
     event.preventDefault();
 
+    resetError();
+
     setIsLoading(true);
     try {
-      const response = await login(credential, saveSession);
+      await login(credential, saveSession);
       setIsLoading(false);
     } catch (error) {
-        console.log(error)
+      console.log(error);
       setIsLoading(false);
       setError(error);
       return;

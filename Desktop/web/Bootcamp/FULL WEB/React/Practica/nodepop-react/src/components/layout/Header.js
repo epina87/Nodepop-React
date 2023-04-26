@@ -2,8 +2,12 @@ import { logout } from '../auth/service';
 import './style/Header.css';
 import './style/Button.css';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/context';
+import { useContext } from 'react';
 
-const Header = ({ isLogged, onLogout }) => {
+const Header = () => {
+  const {isLogged, onLogout} = useContext(AuthContext);
+
   const navigate = useNavigate();
   const handleLogoutClick = async () => {
     await logout();

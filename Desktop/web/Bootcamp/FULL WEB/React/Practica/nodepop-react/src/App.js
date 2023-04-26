@@ -7,6 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import NotFoundPage from './components/adverts/NotFound/NotFoundPage';
 import AdvertPage from './components/adverts/AdvertPage';
 import RequireAuth from './components/auth/RequireAuth';
+import { AuthContext } from './components/auth/context';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIslogged] = useState(isInitiallyLogged);
@@ -21,45 +22,47 @@ function App({ isInitiallyLogged }) {
 
   return (
     <div className="App">
-      <Routes>
-        <Route
-          path="/login"
-          element={<LoginPage onLogin={handleLogin} />}
-        ></Route>
+      <AuthContext.Provider value={{isLogged,onLogout:handleLogout, onLogin:handleLogin}}>
+        <Routes>
+          <Route
+            path="/login"
+            element={<LoginPage/>}
+          ></Route>
 
-        <Route
-          path="/adverts"
-          element={
-            <RequireAuth isLogged={isLogged}>
-              <AdvertsPage onLogout={handleLogout} isLogged={isLogged} />
-            </RequireAuth>
-          }
-        />
+          <Route
+            path="/adverts"
+            element={
+              <RequireAuth>
+                <AdvertsPage />
+              </RequireAuth>
+            }
+          />
 
-        <Route
-          path="/adverts/new"
-          element={ 
-                <RequireAuth isLogged={isLogged}>
-                  <NewAdvertPage onLogout={handleLogout} isLogged={isLogged} />
-                </RequireAuth>
-          }
-        />
+          <Route
+            path="/adverts/new"
+            element={
+              <RequireAuth>
+                <NewAdvertPage/>
+              </RequireAuth>
+            }
+          />
 
-        <Route
-          path="/adverts/:id"
-          element={
-            <RequireAuth isLogged={isLogged}>
-              <AdvertPage onLogout={handleLogout} isLogged={isLogged} />
-            </RequireAuth>
-          }
-        />
+          <Route
+            path="/adverts/:id"
+            element={
+              <RequireAuth>
+                <AdvertPage/>
+              </RequireAuth>
+            }
+          />
 
-        <Route path="/404" element={<NotFoundPage />}></Route>
+          <Route path="/404" element={<NotFoundPage />}></Route>
 
-        <Route path="*" element={<Navigate to="/404" />}></Route>
+          <Route path="*" element={<Navigate to="/404" />}></Route>
 
-        <Route path="/" element={<Navigate to="/adverts" />} />
-      </Routes>
+          <Route path="/" element={<Navigate to="/adverts" />} />
+        </Routes>
+      </AuthContext.Provider>
     </div>
   );
 }

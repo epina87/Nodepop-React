@@ -1,8 +1,8 @@
 import Layout from '../layout/Layout';
 
-function NewAdvertPage(props) {
+function NewAdvertPage() {
   return (
-    <Layout title="New Advert" { ...props }>
+    <Layout title="New Advert">
       <div>
         <input
           type="file"
