@@ -14,6 +14,7 @@ function AdvertsPage() {
 
     getAdvertsList().then(adverts => {
       setAdverts(adverts);
+      
       setIsLoading(false);
     });
   }, []);
@@ -26,20 +27,26 @@ function AdvertsPage() {
         <div className="Adverts-Page-Container">
           {console.log(adverts)}
           {!!adverts.length ? (
-            <ul>
+            <div>
               {adverts.map(advert => (
+                <ul>
                 <li key={advert.id}>
                   <Link to={`/adverts/${advert.id}`}>
-                    {advert.name}
-
-                    {advert.price}
-                    <p>{advert.sale}</p>
-
-                    {advert.tags}
+                    Name: {advert.name}
+                    <br/>
+                    Price: {advert.price}
+                    <br/>
+                    Type: {advert.sale}
+                    <br/>
+                    Tags: {advert.tags}
                   </Link>
                 </li>
+                </ul>
+
+                
               ))}
-            </ul>
+              
+            </div>
           ) : (
             <p>
               <NavLink to="/adverts/new"> Be the first one!</NavLink>

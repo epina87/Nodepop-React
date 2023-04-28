@@ -2,11 +2,11 @@ import { logout } from '../auth/service';
 import './style/Header.css';
 import './style/Button.css';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../auth/context';
-import { useContext } from 'react';
+import { useAuth } from '../auth/context';
+import { getMe } from '../adverts/service';
 
 const Header = () => {
-  const {isLogged, onLogout} = useContext(AuthContext);
+  const { isLogged, onLogout } = useAuth();
 
   const navigate = useNavigate();
   const handleLogoutClick = async () => {
@@ -14,9 +14,25 @@ const Header = () => {
     onLogout();
   };
 
+
+const itsMe=async()=>{
+    try {
+        await getMe();
+    } catch (error) {
+        if (error.status===401){
+            navigate('/login');
+        }
+        
+    }
+
+}
+  
+
   const goLogin = () => {
     navigate('/login');
   };
+
+  itsMe()
 
   return (
     <header>
@@ -30,9 +46,10 @@ const Header = () => {
       <nav>
         <NavLink to="/adverts/new"> New Advert</NavLink>
 
-        <NavLink to="/adverts"> See Adverts</NavLink>
-
-        {isLogged ? (
+        <NavLink to="/adverts"> See Adverts</NavLink>        
+      </nav>
+      <div>
+      {isLogged ? (
           <button className="btn" onClick={handleLogoutClick}>
             Logout
           </button>
@@ -42,7 +59,7 @@ const Header = () => {
             Login
           </button>
         )}
-      </nav>
+      </div>
     </header>
   );
 };

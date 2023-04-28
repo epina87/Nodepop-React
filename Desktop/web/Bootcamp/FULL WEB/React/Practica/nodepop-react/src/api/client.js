@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { json } from 'react-router-dom';
 
 window.config = JSON.stringify(process.env);
 
@@ -22,9 +23,17 @@ client.interceptors.response.use(
 
 export default client;
 
-export const setAuthorizationHeader = token =>
-  (client.defaults.headers.common['Authorization'] = `Bearer ${token}`);
+export const setAuthorizationHeader = async token => {
+  client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+
+}
 
 export const removeAuthorizationHeader = () => {
   delete client.defaults.headers.common['Authorization'];
+};
+
+export const getMe = async () => {
+  const url = '/api/auth/me';
+  return await client.get(url);
 };

@@ -2,7 +2,7 @@ import Layout from "../../layout/Layout"
 
 const NotFoundPage = ()=>{
 
-    return <Layout title="404 - Not Found Server">
+    return <Layout title="404 - Page Not Found">
 
     </Layout>
 }

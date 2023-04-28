@@ -1,5 +1,6 @@
 import Footer from './Footer';
 import Header from './Header';
+import './style/Layout.css'
 
 const Layout = ({ title, children}) => {
   return (
