@@ -25,8 +25,6 @@ export default client;
 
 export const setAuthorizationHeader = async token => {
   client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-
 }
 
 export const removeAuthorizationHeader = () => {

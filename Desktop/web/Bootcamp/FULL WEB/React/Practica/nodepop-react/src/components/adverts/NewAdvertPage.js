@@ -36,7 +36,7 @@ function NewAdvertPage() {
       photo: file.current,
     };
 
-    console.log(data);
+
     try {
       setIsloading(true);
       const advert = await createAdvert(data, {
@@ -157,9 +157,7 @@ function NewAdvertPage() {
 
               {!!tags?.length ? (
                 <ul>
-                  {
-                    //console.log('tags', tags)
-                  }
+
 
                   {tags.map(tag => (
                     <li key={tag}>

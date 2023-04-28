@@ -21,8 +21,7 @@ const itsMe=async()=>{
     } catch (error) {
         if (error.status===401){
             navigate('/login');
-        }
-        
+        }     
     }
 
 }

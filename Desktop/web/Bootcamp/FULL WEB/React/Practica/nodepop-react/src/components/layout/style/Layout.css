@@ -41,3 +41,22 @@ li {
   justify-content: center;
   align-items: center;*/
 }
+
+.Search-Container {
+  text-align: left;
+  margin-left: 50px;
+}
+.listAdverts li {
+  border-bottom: none;
+}
+
+.advertPageView {
+  display: flex;
+  justify-content: left;
+}
+.advertPageViewDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  
+}
