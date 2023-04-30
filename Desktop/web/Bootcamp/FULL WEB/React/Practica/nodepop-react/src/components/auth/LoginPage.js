@@ -99,7 +99,7 @@ function LoginPage() {
                 <input type="checkbox" onChange={handlechecked} /> you want to
                 save the session
               </p>
-              {error && <div> {error.message} </div>}
+              {error && <div className='error'> {error.message} </div>}
             </form>
           </div>
         </div>

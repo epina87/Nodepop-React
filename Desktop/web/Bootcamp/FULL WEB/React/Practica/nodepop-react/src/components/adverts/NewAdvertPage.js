@@ -3,6 +3,7 @@ import Layout from '../layout/Layout';
 import { createAdvert, getTags } from './service';
 import '../layout/style/Button.css';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../shared/Loading';
 
 function NewAdvertPage() {
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ function NewAdvertPage() {
     Page To New Advert"
     >
       {isLoading ? (
-        <div> Loading ...</div>
+        <Loading/>
       ) : (
         <div className="newAdvert">
           <form id="createUser" onSubmit={handleSubmit}>

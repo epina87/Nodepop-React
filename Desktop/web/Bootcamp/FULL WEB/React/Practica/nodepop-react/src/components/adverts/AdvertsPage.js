@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import './style/AdvertsPage.css';
 import { getAdvertsList, getTags } from './service';
-//import { logout } from '../auth/service';
 import Layout from '../layout/Layout';
 import { Link, NavLink } from 'react-router-dom';
+import Loading from '../shared/Loading';
 
 function AdvertsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [adverts, setAdverts] = useState([]);
+  const [adOrigin, setAdOrigin] = useState([]);
   const [query, setQuery] = useState('');
   const [saleTipe, setSaleTipe] = useState();
   const [saleName, setSaleName] = useState('todos');
@@ -21,6 +21,7 @@ function AdvertsPage() {
 
     getAdvertsList().then(adverts => {
       setAdverts(adverts);
+      setAdOrigin(adverts);
       getTags().then(tags => {
         setTags(tags);
       });
@@ -28,8 +29,11 @@ function AdvertsPage() {
     });
   }, []);
 
+  let filterAdvert = adOrigin;
+
+
   // Filters
-  let filterAdvert = adverts.filter(advert =>
+  filterAdvert = filterAdvert.filter(advert =>
     (advert.name ?? '').toUpperCase().startsWith(query.toLocaleUpperCase()),
   );
 
@@ -45,13 +49,11 @@ function AdvertsPage() {
   );
 
   if (tagsSave.length > 0) {
-
     filterAdvert = filterAdvert.filter(({ tags }) =>
       tags.some(tag => tagsSave.includes(tag)),
     );
   }
 
-  
   const handleSearchTipeChange = event => {
     setSaleName(event.target.value !== 'todos' ? 'filtro' : 'todos');
     setSaleTipe(event.target.value === 'compra' ? false : true);
@@ -74,7 +76,7 @@ function AdvertsPage() {
   return (
     <Layout title="Adverts Page">
       {isLoading ? (
-        <div> Loading ...</div>
+        <Loading />
       ) : (
         <div className="Adverts-Page-Container">
           {!!adverts.length ? (
@@ -187,7 +189,9 @@ function AdvertsPage() {
             </div>
           ) : (
             <p>
-              <NavLink to="/adverts/new"> Be the first one!</NavLink>
+              <NavLink to="/adverts/new">
+                <p className="firdt-ad">click here to create the first ad!!</p>
+              </NavLink>
             </p>
           )}
         </div>

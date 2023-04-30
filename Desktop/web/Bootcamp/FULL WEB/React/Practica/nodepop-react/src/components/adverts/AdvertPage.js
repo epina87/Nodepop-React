@@ -3,6 +3,7 @@ import Layout from '../layout/Layout';
 import { useEffect, useState } from 'react';
 import { deleteAdvert, getAdvert } from './service';
 import '../layout/style/Button.css';
+import Loading from '../shared/Loading';
 
 function AdvertPage() {
   const params = useParams();
@@ -10,6 +11,7 @@ function AdvertPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [advert, setAdvert] = useState(null);
+  const [delAd,setDelAd] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,24 +32,55 @@ function AdvertPage() {
     event.preventDefault();
     try {
       setIsLoading(true);
-      const response = await deleteAdvert(advert.id);
-      console.log(response)
+      await deleteAdvert(advert.id);
       setIsLoading(false);
-      navigate("/adverts");
+      navigate('/adverts');
     } catch (error) {
-
       <Navigate to="/404" />;
     }
   };
 
+  const handleConfirmDelete =()=>{
+    setDelAd(true)
+  }
+  const handleCancelDelete =()=>{
+    setDelAd(false)
+  }
+
+  
+
   return (
     <Layout title="Adverts Detail">
       {isLoading ? (
-        <div> Loading ...</div>
+        <Loading/>
+        
       ) : (
         <div className="advertPage">
           {advert && (
             <>
+            {delAd ?(
+
+            <div className='Confirm-Delete'>
+                <p>Confirm Delete Advert?</p>
+                <button
+                    type="submit"
+                    className="btn btn-Delete"
+                    onClick={handleDeleteAd}
+                  >
+                   Confirm Delete Ad
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="btn"
+                    onClick={handleCancelDelete}
+                  >
+                   Cancelate Delete
+                  </button>
+            </div>
+            ):(
+
+
               <div className="advertPageView">
                 <div className="advertPageViewDate">
                   Name: {advert.name}
@@ -68,14 +101,14 @@ function AdvertPage() {
                   <button
                     type="submit"
                     className="btn"
-                    onClick={handleDeleteAd}
+                    onClick={handleConfirmDelete}
                   >
                     Delete Ad
                   </button>
                 </div>
                 <div>
                   <img
-                    src={advert.photo}
+                    src={!!advert.photo ? advert.photo : "https://as1.ftcdn.net/v2/jpg/01/17/72/36/1000_F_117723612_z7zQmUrrpG4IRGQLvgX5nwtwC18ke3qU.jpg"  }
                     alt={advert.name}
                     width="500"
                     height="600"
@@ -83,6 +116,8 @@ function AdvertPage() {
                 </div>
                 <div></div>
               </div>
+                          )         
+                        }
             </>
           )}
         </div>

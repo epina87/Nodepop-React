@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Create a file with the name ".env.local" and create a variable with the path of the server 
+    REACT_APP_API_BASE_URL= "Ruta Server"
 ## Available Scripts
 
 In the project directory, you can run:

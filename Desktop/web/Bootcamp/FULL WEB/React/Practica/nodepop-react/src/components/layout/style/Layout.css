@@ -58,5 +58,36 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  
+  margin-right: 20px;
+  padding: 30px;
 }
+
+.Search-Container fieldset {
+  width: 12rem;
+}
+
+.Confirm-Delete {
+  font-size: 25px;
+}
+
+img {
+  width: 600px;
+  height: 500px;
+}
+
+.firdt-ad {
+  font-size: 20px;
+  font-weight: bolder;
+  border: 20px solid rgb(20, 94, 7);
+  background-color: rgb(143, 221, 143);
+  padding: 40px;
+  color: rgb(53, 89, 53);
+}
+
+.firdt-ad:hover {
+
+    border: 20px solid rgb(141, 188, 133);
+    background-color: rgb(41, 103, 41);
+    color: rgb(24, 241, 129);
+
+  }

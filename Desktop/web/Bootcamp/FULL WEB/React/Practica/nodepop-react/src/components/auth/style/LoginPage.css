@@ -108,6 +108,10 @@ background: linear-gradient(0deg, rgb(8, 146, 72) 0%, rgb(21, 99, 72) 100%);
   width: 100%;
 }
 
+.error{
+    color: red;
+    font-size: 20px;
+}
 
 
 

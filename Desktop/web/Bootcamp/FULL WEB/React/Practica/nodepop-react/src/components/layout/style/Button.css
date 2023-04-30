@@ -63,3 +63,16 @@
 .btn:hover:after {
   width: 100%;
 }
+
+.Confirm-Delete .btn-Delete {
+  margin: 10px;
+  background: rgb(227, 118, 101);
+  
+
+}
+
+.Confirm-Delete .btn-Delete:after {
+
+    background: rgb(227, 63, 63);
+
+  }

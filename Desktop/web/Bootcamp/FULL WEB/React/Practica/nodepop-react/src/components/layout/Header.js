@@ -43,9 +43,9 @@ const itsMe=async()=>{
       </div>
 
       <nav>
-        <NavLink to="/adverts/new"> New Advert</NavLink>
+        <NavLink to="/adverts/new" className="active"> New Advert</NavLink>
 
-        <NavLink to="/adverts"> See Adverts</NavLink>        
+        <NavLink to="/adverts"  className="active"> See Adverts</NavLink>        
       </nav>
       <div>
       {isLogged ? (
