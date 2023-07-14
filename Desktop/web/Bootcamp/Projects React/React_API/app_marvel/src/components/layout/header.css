@@ -1,0 +1,35 @@
+header{
+    background-color: rgb(239, 21, 21);
+    color: azure;
+    
+    
+}
+
+.titleMarvel{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: -2.2px;
+    transform:scaleY(1.5); 
+    margin-bottom: 0;
+
+}
+
+header h2{
+    position: absolute;
+    top: 1.5%;
+    left: 80%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1.2rem;
+    
+}
+
+.header-top{
+    
+    position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+
+   display: block;
+   float: top;
+   z-index: 2;
+}
