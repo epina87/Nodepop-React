@@ -48,32 +48,32 @@ const Navbar = () => {
       </button>
 
       <ul className="navbar-nav mb-2 mb-lg-0" id={viewOptionsClass}>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/comics" className="nav-link active">
             Comics
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/creators" className="nav-link active">
             Creators
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/characters" className="nav-link active">
             Characters
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/events" className="nav-link active">
             Events
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/series" className="nav-link active">
             Series
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleCloseNav}>
           <Link to="/stories" className="nav-link active">
             Stories
           </Link>

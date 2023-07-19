@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import Cards from './layout/CardsSelect/Cards';
+import Cards from './layout/Cards';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCall } from '../api/client';
 import { addList } from '../redux/userSlice';
 
-function PageMarvelPrincipalList({ principalList }) {
+function LoadCards({ principalList }) {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
@@ -50,12 +50,8 @@ function PageMarvelPrincipalList({ principalList }) {
   }, [data, dispatch, marvel, principalList]);
 
   return (
-    <Cards
-      data={data}
-      titlePage={`${principalList} Page`}
-      namePage={`${principalList}`}
-    />
+    <p>Loading...</p>
   );
 }
 
-export default PageMarvelPrincipalList;
+export default LoadCards;

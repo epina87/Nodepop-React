@@ -1,0 +1,38 @@
+ul {
+  padding-right: 2rem;
+}
+
+.carousel-control-next-icon:after {
+  content: '>';
+  font-size: 55px;
+  color: black;
+  border-color: red;
+  background-color: white;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+  border-color: red;
+  background-color: white;
+}
+
+#div-padding-0 {
+  padding: 0;
+}
+
+div #img-creator{
+    height: 12rem;
+    width: 10rem;
+    object-fit: contain;
+    padding: 0;
+}
+
+#tit-section{
+    color: red;
+    background-color: black;
+    padding: 7px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    border-radius: 5px;
+}
