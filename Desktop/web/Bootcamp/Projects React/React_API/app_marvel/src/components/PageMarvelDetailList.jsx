@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import CardsDetail from './layout/CardsDetailSections/CardsDetail';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { filterCards, getCards } from '../utils/selectors';
 import { getCall } from '../api/client';
 import { addList } from '../redux/userSlice';
+import LoadingPage from './layout/Loading/Loading';
+import NotExistDetail from './layout/Error/NotExistDetail';
 //import LoadCards from "./LoadCards";
 
 function PageMarvelDetailList() {
+  const [loading, setLoading] = useState(false);
   const { id, namePage } = useParams();
 
   const [data, setData] = useState([]);
@@ -57,15 +60,22 @@ function PageMarvelDetailList() {
     }
 
     setDataDetail(filterCards(data, id));
+    setLoading(true);
   }, [data, dispatch, marvel, namePage, id]);
 
-  console.log(namePage);
+  console.log(loading);
+
+
   return (
     <>
+    
       {!!dataDetail?.length ? (
         <CardsDetail data={dataDetail} namePage={namePage} />
       ) : (
-        <p>Sin Cards</p>
+        <>
+
+        {loading ?  <NotExistDetail />  : <LoadingPage />}
+        </>
       )}
     </>
   );

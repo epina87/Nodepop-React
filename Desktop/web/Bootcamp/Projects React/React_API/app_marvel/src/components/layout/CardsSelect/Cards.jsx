@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './cards.css';
+import { useEffect, useState } from 'react';
+import LoadingPage from '../Loading/Loading';
+import NotExistDetail from '../Error/NotExistDetail';
 
 function Cards({ data, titlePage, namePage }) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
   return (
     <main>
       <div className="container">
@@ -41,7 +50,7 @@ function Cards({ data, titlePage, namePage }) {
               ))}
             </ul>
           ) : (
-            <p></p>
+            <>{loading ? <NotExistDetail /> : <LoadingPage />}</>
           )}
         </section>
       </div>

@@ -1,0 +1,16 @@
+#img-404-error{
+    background-image: url("./404.jpg");
+
+    height: 78vh;
+    width: auto;
+
+    background-size: 100vh;
+    background-repeat: no-repeat;
+
+    padding-top: 20px;
+}
+
+#img-404-error p{
+    font-size: 5rem;
+    color: azure;
+}

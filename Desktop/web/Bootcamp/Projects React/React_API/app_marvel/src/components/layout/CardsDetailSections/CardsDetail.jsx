@@ -4,9 +4,13 @@ import './cardsDetail.css';
 import CreatorsSection from './CreatorsSection';
 import SeriesSection from './SeriesSection';
 import DetailSection from './DetailSection';
+import LoadingPage from '../Loading/Loading';
+import NotExistDetail from '../Error/NotExistDetail';
 
 function CardsDetail({ data, namePage }) {
   const dataDetail = data[0];
+
+  const [loading, setLoading] = useState(false);
 
   const [comics, setComic] = useState({});
   const [creators, setCreators] = useState({});
@@ -20,8 +24,9 @@ function CardsDetail({ data, namePage }) {
     setEvents(!!dataDetail.events ? dataDetail.events : {});
     setSeries(!!dataDetail.series ? dataDetail.series : {});
     setStories(!!dataDetail.stories ? dataDetail.stories : {});
-  }, [dataDetail]);
 
+    setLoading(true);
+  }, [dataDetail]);
 
   return (
     <main>
@@ -75,7 +80,7 @@ function CardsDetail({ data, namePage }) {
           )}
         </section>
       ) : (
-        <p></p>
+        <>{loading ? <NotExistDetail /> : <LoadingPage />}</>
       )}
     </main>
   );

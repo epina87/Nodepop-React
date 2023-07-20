@@ -8,6 +8,7 @@ import Characters from './components/Characters';
 import PageMarvelPrincipalList from './components/PageMarvelPrincipalList';
 import Footer from './components/layout/Body/Footer';
 import PageMarvelDetailList from './components/PageMarvelDetailList';
+import NotFoundPage from './components/layout/Error/404';
 
 function App() {
   return (
@@ -52,8 +53,8 @@ function App() {
           element={<PageMarvelDetailList />}
         />
 
-        {/* <Route path="/404" element={<NotFoundPage />}></Route>
-            <Route path="*" element={<Navigate to="/404" />}></Route> */}
+        <Route path="/404" element={<NotFoundPage />}></Route>
+        <Route path="*" element={<Navigate to="/404" />}></Route>
       </Routes>
 
       <Footer />
